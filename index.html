@@ -154,20 +154,25 @@ header{
 .nav-right-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
-.cart-button{
+.lang-btn, .cart-button{
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     color:white;
-    padding:10px 18px;
+    padding:10px 16px;
     border-radius:10px;
     cursor:pointer;
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 6px;
+    font-size: 14px;
+}
+
+.lang-btn:hover, .cart-button:hover {
+    background: var(--card-hover);
 }
 
 .cart-count{
@@ -470,6 +475,7 @@ section{
     cursor:pointer;
 }
 
+/* ================= FOOTER ================= */
 footer{
     border-top: 1px solid var(--border-color);
     background: var(--bg-secondary);
@@ -479,7 +485,27 @@ footer{
 
 footer .logo {
     justify-content: center;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
+}
+
+.footer-contacts {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 18px 0;
+    flex-wrap: wrap;
+}
+
+.footer-contacts a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition-smooth);
+}
+
+.footer-contacts a:hover {
+    color: var(--text-main);
 }
 
 footer p {
@@ -510,8 +536,9 @@ footer p {
         </div>
 
         <div class="nav-right-actions">
+            <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">EN</button>
             <button class="cart-button" onclick="openCart()">
-                🛒 Sepet <span class="cart-count" id="cartCount">0</span>
+                <span id="cartButtonText">🛒 Sepet <span class="cart-count" id="cartCount">0</span></span>
             </button>
         </div>
     </nav>
@@ -608,11 +635,166 @@ footer p {
 
 <footer>
     <a href="#" class="logo">Keen<span>Logo</span></a>
-    <p>Siyah-Gri Digital Branding & Design Stüdyosu</p>
+    <p class="footer-desc">Siyah-Gri Digital Branding & Design Stüdyosu</p>
+    <div class="footer-contacts">
+        <a href="https://youtube.com/@KeenLogo" target="_blank">📺 (YouTube) KeenLogo</a>
+        <a href="mailto:keendesignlogo@gmail.com">✉️ (Gmail) keendesignlogo@gmail.com</a>
+    </div>
     <p style="margin-top:12px; font-size: 13px;">© 2026 KeenLogo. Bütün hakları saklıdır.</p>
 </footer>
 
 <script>
+// ÇEVİRİ SÖZLÜĞÜ (TR / EN)
+const translations = {
+    tr: {
+        promo: "◼ KÖMÜR GRİSİ & OBSİDİYEN SİYAH ESTETİK • KeenLogo Tasarım Stüdyoları Aktif • Hazır Logo Konseptleri • Visa Kart Uyumlu!",
+        navReady: "Hazır Logolar",
+        navName: "İsim & Konsept",
+        navCustom: "Özel Tasarım",
+        cartBtn: "🛒 Sepet",
+        badge: "KeenLogo Siyah-Gri Stüdyo Koleksiyonu",
+        heroTitle1: "Sizin Markanız.",
+        heroTitle2: "Sizin Kimliğiniz.",
+        heroDesc: "İster hazır logolarımızdan birini seçin, ister tamamen firmanıza özel yeni bir tasarım ve marka ismi talep edin.",
+        heroBtn1: "Vitrine Göz At",
+        heroBtn2: "Özel İstek Gönder",
+        sectionTitle: "Hazır Logolar",
+        sectionDesc: "Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.",
+        noListingTitle: "Henüz Aktif İlan Yok",
+        noListingDesc: "Şu anda vitrinde sergilenen hazır logo bulunmuyor. Yeni konseptler yakında eklenecektir. Özel tasarım talepleriniz için aşağıdaki formu kullanabilirsiniz.",
+        form1Title: "Firma İsmi & Konsept Talebi",
+        form1Desc: "İşletmeniz için en uygun ismi bulalım ve sıfırdan konsept oluşturalım.",
+        sectorLabel: "Faaliyet Alanı (Sektör)",
+        sectorPlaceholder: "Örn: E-ticaret, Kafe, Yazılım...",
+        notesLabel: "Beklentileriniz / Detaylar",
+        notesPlaceholder: "İstediğiniz tarzı veya anahtar kelimeleri yazın...",
+        sendBtn1: "Talebi Gönder",
+        form2Title: "Özel Tasarım Görüşmesi",
+        form2Desc: "Aklınızdaki özel projeyi bize doğrudan iletin.",
+        subjectLabel: "Konu Başlığı",
+        subjectPlaceholder: "Özel Logo Tasarımı",
+        msgLabel: "Mesajınız / Tasarım Detayları",
+        msgPlaceholder: "Detaylı isteklerinizi buraya yazın...",
+        sendBtn2: "Mesajı Gönder",
+        cartTitle: "Sepetiniz",
+        emptyCart: "Sepetiniz boş.",
+        totalText: "Toplam:",
+        checkoutBtn: "Siparişi Tamamla (E-posta ile Gönder)",
+        footerDesc: "Siyah-Gri Digital Branding & Design Stüdyosu",
+        footerRights: "© 2026 KeenLogo. Bütün hakları saklıdır."
+    },
+    en: {
+        promo: "◼ CHARCOAL GRAY & OBSIDIAN BLACK AESTHETIC • KeenLogo Design Studios Active • Ready Logo Concepts • Visa Card Compatible!",
+        navReady: "Ready Logos",
+        navName: "Name & Concept",
+        navCustom: "Custom Design",
+        cartBtn: "🛒 Cart",
+        badge: "KeenLogo Black-Gray Studio Collection",
+        heroTitle1: "Your Brand.",
+        heroTitle2: "Your Identity.",
+        heroDesc: "Choose from our ready-made logos or request a completely custom design and brand name tailored to your business.",
+        heroBtn1: "Browse Showcase",
+        heroBtn2: "Send Custom Request",
+        sectionTitle: "Ready Logos",
+        sectionDesc: "Choose any custom design concept from our showcase.",
+        noListingTitle: "No Active Listings Yet",
+        noListingDesc: "There are currently no ready logos displayed in the showcase. New concepts will be added soon. You can use the form below for custom design requests.",
+        form1Title: "Company Name & Concept Request",
+        form1Desc: "Let's find the best name for your business and build a concept from scratch.",
+        sectorLabel: "Industry / Sector",
+        sectorPlaceholder: "E.g., E-commerce, Cafe, Software...",
+        notesLabel: "Your Expectations / Details",
+        notesPlaceholder: "Write your preferred style or keywords...",
+        sendBtn1: "Send Request",
+        form2Title: "Custom Design Consultation",
+        form2Desc: "Send your custom project idea directly to us.",
+        subjectLabel: "Subject",
+        subjectPlaceholder: "Custom Logo Design",
+        msgLabel: "Your Message / Design Details",
+        msgPlaceholder: "Write your detailed requests here...",
+        sendBtn2: "Send Message",
+        cartTitle: "Your Cart",
+        emptyCart: "Your cart is empty.",
+        totalText: "Total:",
+        checkoutBtn: "Complete Order (Send via Email)",
+        footerDesc: "Black-Gray Digital Branding & Design Studio",
+        footerRights: "© 2026 KeenLogo. All rights reserved."
+    }
+};
+
+let currentLang = localStorage.getItem("keen_lang") || "tr";
+
+function toggleLanguage() {
+    currentLang = currentLang === "tr" ? "en" : "tr";
+    localStorage.setItem("keen_lang", currentLang);
+    updateLanguageUI();
+}
+
+function updateLanguageUI() {
+    const t = translations[currentLang];
+    document.getElementById("langToggle").innerText = currentLang === "tr" ? "EN" : "TR";
+    
+    document.querySelector(".promo-text").innerText = t.promo;
+    const desktopLinks = document.querySelectorAll(".nav-links-desktop a");
+    if(desktopLinks.length >= 3) {
+        desktopLinks[0].innerText = t.navReady;
+        desktopLinks[1].innerText = t.navName;
+        desktopLinks[2].innerText = t.navCustom;
+    }
+    
+    const cartCountVal = document.getElementById("cartCount").innerText;
+    document.getElementById("cartButtonText").innerHTML = `${t.cartBtn} <span class="cart-count" id="cartCount">${cartCountVal}</span>`;
+
+    document.querySelector(".badge").innerText = t.badge;
+    document.querySelector(".hero h1").innerHTML = `${t.heroTitle1}<br><span>${t.heroTitle2}</span>`;
+    document.querySelector(".hero p").innerText = t.heroDesc;
+    const heroBtns = document.querySelectorAll(".hero-buttons a");
+    if(heroBtns.length >= 2) {
+        heroBtns[0].innerText = t.heroBtn1;
+        heroBtns[1].innerText = t.heroBtn2;
+    }
+
+    document.querySelector("#hazir-logolar .section-title h2").innerText = t.sectionTitle;
+    document.querySelector("#hazir-logolar .section-title p").innerText = t.sectionDesc;
+    
+    const noListingBox = document.querySelector("#hazir-logolar div[style*='background: var(--card-bg)']");
+    if(noListingBox) {
+        noListingBox.querySelector("h3").innerText = t.noListingTitle;
+        noListingBox.querySelector("p").innerText = t.noListingDesc;
+    }
+
+    const formBoxes = document.querySelectorAll(".form-box");
+    if(formBoxes.length >= 2) {
+        formBoxes[0].querySelector("h3").innerText = t.form1Title;
+        formBoxes[0].querySelector("p").innerText = t.form1Desc;
+        formBoxes[0].querySelectorAll("label")[0].innerText = t.sectorLabel;
+        formBoxes[0].querySelector("input").placeholder = t.sectorPlaceholder;
+        formBoxes[0].querySelectorAll("label")[1].innerText = t.notesLabel;
+        formBoxes[0].querySelector("textarea").placeholder = t.notesPlaceholder;
+        formBoxes[0].querySelector("button").innerText = t.sendBtn1;
+
+        formBoxes[1].querySelector("h3").innerText = t.form2Title;
+        formBoxes[1].querySelector("p").innerText = t.form2Desc;
+        formBoxes[1].querySelectorAll("label")[0].innerText = t.subjectLabel;
+        formBoxes[1].querySelector("input").placeholder = t.subjectPlaceholder;
+        formBoxes[1].querySelectorAll("label")[1].innerText = t.msgLabel;
+        formBoxes[1].querySelector("textarea").placeholder = t.msgPlaceholder;
+        formBoxes[1].querySelector("button").innerText = t.sendBtn2;
+    }
+
+    document.querySelector(".cart-panel-header h3").innerText = t.cartTitle;
+    document.querySelector(".checkout-btn").innerText = t.checkoutBtn;
+    const totalSpan = document.querySelector("#cartTotal");
+    if(totalSpan && totalSpan.parentElement) {
+        totalSpan.parentElement.querySelector("span:first-child").innerText = t.totalText;
+    }
+
+    document.querySelector("footer .footer-desc").innerText = t.footerDesc;
+    document.querySelector("footer p:last-child").innerText = t.footerRights;
+
+    updateCartUI();
+}
+
 function showToast(message) {
     const container = document.getElementById("toast-container");
     const toast = document.createElement("div");
@@ -631,7 +813,7 @@ let cart = JSON.parse(localStorage.getItem("keen_cart")) || [];
 function addToCart(name, price, currency){
     cart.push({ name, price, currency });
     saveCart();
-    showToast(`"${name}" sepetinize eklendi.`);
+    showToast(currentLang === 'tr' ? `"${name}" sepetinize eklendi.` : `"${name}" added to your cart.`);
 }
 
 function removeFromCart(index){
@@ -648,15 +830,17 @@ function updateCartUI(){
     const count = document.getElementById("cartCount");
     const items = document.getElementById("cartItems");
     const totalElement = document.getElementById("cartTotal");
+    const t = translations[currentLang];
 
-    count.innerText = cart.length;
-    items.innerHTML = "";
+    if(count) count.innerText = cart.length;
+    if(!items) return;
     
+    items.innerHTML = "";
     let totalsByCurrency = {};
 
     if(cart.length === 0){
-        items.innerHTML = `<p style='color:var(--text-muted); padding:30px 0; text-align:center;'>Sepetiniz boş.</p>`;
-        totalElement.innerText = "0";
+        items.innerHTML = `<p style='color:var(--text-muted); padding:30px 0; text-align:center;'>${t.emptyCart}</p>`;
+        if(totalElement) totalElement.innerText = "0";
         return;
     }
 
@@ -671,7 +855,7 @@ function updateCartUI(){
         div.innerHTML = `
             <div style="display:flex; justify-content:space-between; align-items: center;">
                 <strong style="font-size:14px; color:white;">${item.name}</strong>
-                <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#a3a3a3; cursor:pointer; font-size:13px;">Sil</button>
+                <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#a3a3a3; cursor:pointer; font-size:13px;">${currentLang === 'tr' ? 'Sil' : 'Remove'}</button>
             </div>
             <p style="color:var(--text-muted); margin-top:4px; font-size:13px;">${item.price} ${item.currency}</p>
         `;
@@ -679,7 +863,7 @@ function updateCartUI(){
     });
 
     let totalText = Object.keys(totalsByCurrency).map(curr => `${totalsByCurrency[curr]} ${curr}`).join(' + ');
-    totalElement.innerText = totalText;
+    if(totalElement) totalElement.innerText = totalText;
 }
 
 function openCart(){
@@ -692,34 +876,35 @@ function closeCart(){
 
 function checkout(){
     if(cart.length === 0){
-        showToast("Lütfen önce sepetinize bir ürün ekleyin.");
+        showToast(currentLang === 'tr' ? "Lütfen önce sepetinize bir ürün ekleyin." : "Please add an item to your cart first.");
         return;
     }
     let itemsList = cart.map(i => `- ${i.name} (${i.price} ${i.currency})`).join('\n');
     let totalText = document.getElementById("cartTotal").innerText;
-    window.location.href = `mailto:keendesignlogo@gmail.com?subject=${encodeURIComponent("Yeni Logo Siparişi")}&body=${encodeURIComponent(`Merhaba,\n\nŞu logoları satın almak istiyorum:\n\n${itemsList}\n\nToplam:${totalText}`)}`;
+    window.location.href = `mailto:keendesignlogo@gmail.com?subject=${encodeURIComponent("Yeni Logo Siparişi / New Logo Order")}&body=${encodeURIComponent(`Merhaba / Hello,\n\nŞu logoları satın almak istiyorum / I would like to buy these logos:\n\n${itemsList}\n\nToplam / Total:${totalText}`)}`;
 }
 
 function sendCustomNameRequest() {
     const sector = document.getElementById("customSector").value.trim();
     const notes = document.getElementById("customNotes").value.trim();
     if(!sector && !notes) {
-        showToast("Lütfen alanları doldurun.");
+        showToast(currentLang === 'tr' ? "Lütfen alanları doldurun." : "Please fill in the fields.");
         return;
     }
-    window.location.href = `mailto:keendesignlogo@gmail.com?subject=${encodeURIComponent("Firma Adı Talebi")}&body=${encodeURIComponent(`Sektör: ${sector}\nNotlar:${notes}`)}`;
+    window.location.href = `mailto:keendesignlogo@gmail.com?subject=${encodeURIComponent("Firma Adı & Konsept Talebi")}&body=${encodeURIComponent(`Sektör / Industry: ${sector}\nNotlar / Notes:${notes}`)}`;
 }
 
 function sendDirectMessage() {
     const msgBody = document.getElementById("msgBody").value.trim();
     if(!msgBody) {
-        showToast("Lütfen mesaj yazın.");
+        showToast(currentLang === 'tr' ? "Lütfen mesaj yazın." : "Please write a message.");
         return;
     }
     window.location.href = `mailto:keendesignlogo@gmail.com?subject=${encodeURIComponent("Özel Tasarım Mesajı")}&body=${encodeURIComponent(msgBody)}`;
 }
 
-updateCartUI();
+// Sayfa yüklendiğinde kayıtlı dili uygula
+updateLanguageUI();
 </script>
 </body>
 </html>
