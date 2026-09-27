@@ -6,16 +6,13 @@
 <title>KeenLogo | Premium Siyah-Gri Logo & Dijital Markalaşma Stüdyosu</title>
 
 <style>
-/* ================= CSS DEĞİŞKENLERİ & SİYAH-GRİ PSİKOLOJİSİ ================= */
+/* ================= CSS DEĞİŞKENLERİ & SİYAH-GRİ ESTETİK ================= */
 :root {
     --bg-primary: #050505;      
     --bg-secondary: #0a0a0a;    
     --card-bg: #121212;         
     --card-hover: #181818;      
     --border-color: #222222;    
-    --accent-main: #f8fafc;     
-    --accent-muted: #737373;    
-    --accent-hover: #262626;    
     --text-main: #ffffff;       
     --text-muted: #a3a3a3;      
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -49,9 +46,6 @@ body{
 ::-webkit-scrollbar-thumb {
     background: var(--border-color);
     border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-muted);
 }
 
 /* ================= REKLAM & DUYURU ŞERİDİ ================= */
@@ -113,13 +107,8 @@ header{
     color: var(--text-main);
     font-size: 26px;
     cursor: pointer;
-    transition: var(--transition-smooth);
     display: flex;
     align-items: center;
-}
-
-.menu-btn:hover {
-    color: var(--accent-muted);
 }
 
 .logo{
@@ -133,7 +122,7 @@ header{
 }
 
 .logo span{
-    color: var(--accent-muted);
+    color: var(--text-muted);
     font-weight: 400;
     margin-left: 2px;
 }
@@ -168,23 +157,6 @@ header{
     gap: 12px;
 }
 
-.lang-switch {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    color: white;
-    padding: 8px 12px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition-smooth);
-}
-
-.lang-switch:hover {
-    border-color: var(--accent-muted);
-    background: var(--card-hover);
-}
-
 .cart-button{
     background: var(--card-bg);
     border: 1px solid var(--border-color);
@@ -193,15 +165,9 @@ header{
     border-radius:10px;
     cursor:pointer;
     font-weight: 600;
-    transition: var(--transition-smooth);
     display: flex;
     align-items: center;
     gap: 6px;
-}
-
-.cart-button:hover {
-    border-color: var(--accent-muted);
-    background: var(--card-hover);
 }
 
 .cart-count{
@@ -256,10 +222,6 @@ header{
     cursor: pointer;
 }
 
-.close-sidebar:hover {
-    color: white;
-}
-
 .sidebar-links {
     display: flex;
     flex-direction: column;
@@ -274,15 +236,9 @@ header{
     border-radius: 10px;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    transition: var(--transition-smooth);
     display: flex;
     align-items: center;
     gap: 12px;
-}
-
-.sidebar-links a:hover {
-    background: var(--card-hover);
-    border-color: var(--accent-muted);
 }
 
 /* ================= HERO BÖLÜMÜ ================= */
@@ -303,17 +259,11 @@ header{
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('1000275188_4.jpg');
+    background-image: url('logo.jpg');
     background-size: 280px;
     opacity: 0.10;
     filter: grayscale(100%) blur(4px);
     z-index: 1;
-    animation: scrollHeroDown 20s linear infinite;
-}
-
-@keyframes scrollHeroDown {
-    0% { background-position: 0 0; }
-    100% { background-position: 0 280px; }
 }
 
 .hero-content{
@@ -330,9 +280,7 @@ header{
     border-radius:30px;
     color: var(--text-muted);
     font-size:13px;
-    font-weight: 500;
     margin-bottom:25px;
-    backdrop-filter: blur(5px);
 }
 
 .hero h1{
@@ -344,7 +292,7 @@ header{
 }
 
 .hero h1 span{
-    color: var(--accent-muted);
+    color: var(--text-muted);
     font-weight: 400;
 }
 
@@ -371,14 +319,8 @@ header{
     border-radius:10px;
     font-weight:700;
     cursor:pointer;
-    transition: var(--transition-smooth);
     text-decoration: none;
     display: inline-block;
-}
-
-.primary-btn:hover {
-    background: #e2e8f0;
-    box-shadow: 0 0 20px rgba(255,255,255,0.1);
 }
 
 .secondary-btn{
@@ -389,31 +331,19 @@ header{
     border-radius:10px;
     font-weight:600;
     cursor:pointer;
-    transition: var(--transition-smooth);
     text-decoration: none;
     display: inline-block;
 }
 
-.secondary-btn:hover {
-    border-color: var(--accent-muted);
-    background: var(--card-hover);
-}
-
-/* ================= GENEL BÖLÜMLER ================= */
 section{
     max-width:1200px;
     margin:auto;
     padding:80px 20px;
 }
 
-.section-title{
-    margin-bottom:40px;
-}
-
 .section-title h2{
     font-size:32px;
     margin-bottom:8px;
-    font-weight: 700;
     color: white;
 }
 
@@ -422,51 +352,7 @@ section{
     font-size: 15px;
 }
 
-/* ================= GÜVEN / ÖZELLİKLER BARI ================= */
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-bottom: 60px;
-}
-
-.feature-card {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 24px;
-    border-radius: 14px;
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    transition: var(--transition-smooth);
-}
-
-.feature-card:hover {
-    border-color: var(--accent-muted);
-    transform: translateY(-3px);
-}
-
-.feature-icon {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-main);
-    padding: 12px;
-    border-radius: 10px;
-    font-size: 18px;
-    border: 1px solid var(--border-color);
-}
-
-.feature-text h4 {
-    font-size: 16px;
-    margin-bottom: 4px;
-    color: white;
-}
-
-.feature-text p {
-    font-size: 13px;
-    color: var(--text-muted);
-}
-
-/* ================= STORE (HAZIR LOGOLAR VİTRİNİ) ================= */
+/* ================= STORE (VİTRİN) ================= */
 .products{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(310px, 370px));
@@ -479,20 +365,13 @@ section{
     border:1px solid var(--border-color);
     border-radius:16px;
     overflow:hidden;
-    transition: var(--transition-smooth);
     display: flex;
     flex-direction: column;
 }
 
-.product:hover{
-    transform:translateY(-6px);
-    border-color: var(--accent-muted);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.8);
-}
-
 .product-image{
     height:280px;
-    background: #111111; /* Siyah logonun kaybolmaması için hafif gri-siyah kontrast arka plan */
+    background: #111111;
     border-bottom: 1px solid var(--border-color);
     display:flex;
     align-items:center;
@@ -505,12 +384,6 @@ section{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: contrast(1.1);
-    transition: transform 0.5s ease;
-}
-
-.product:hover .product-image img {
-    transform: scale(1.04);
 }
 
 .blur-overlay {
@@ -528,7 +401,6 @@ section{
     align-items: center;
     justify-content: center;
     z-index: 2;
-    pointer-events: none;
 }
 
 .blur-overlay span {
@@ -536,7 +408,6 @@ section{
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2.5px;
-    text-transform: uppercase;
 }
 
 .product-info{
@@ -549,14 +420,12 @@ section{
 .product-info h3{
     margin-bottom:8px;
     font-size: 19px;
-    font-weight: 600;
     color: white;
 }
 
 .product-info p{
     color: var(--text-muted);
     font-size:14px;
-    line-height:1.6;
     flex-grow: 1;
 }
 
@@ -583,16 +452,14 @@ section{
     border-radius:8px;
     font-weight:600;
     cursor:pointer;
-    transition: var(--transition-smooth);
 }
 
 .buy-btn:hover {
     background: #ffffff;
     color: #050505;
-    border-color: #ffffff;
 }
 
-/* ================= FORMS & TALEPLER ================= */
+/* ================= FORMLAR ================= */
 .form-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -604,19 +471,6 @@ section{
     border:1px solid var(--border-color);
     border-radius:18px;
     padding:35px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-}
-
-.form-box h3 {
-    font-size: 20px;
-    margin-bottom: 8px;
-    color: white;
-}
-
-.form-box p {
-    color: var(--text-muted);
-    font-size: 14px;
-    margin-bottom: 24px;
 }
 
 .form-group{
@@ -628,7 +482,6 @@ section{
     margin-bottom:8px;
     color: var(--text-muted);
     font-size:13px;
-    font-weight: 500;
 }
 
 .form-group input,
@@ -641,7 +494,6 @@ section{
     padding:13px 16px;
     outline:none;
     font-size: 14px;
-    transition: border-color 0.2s;
 }
 
 .form-group textarea{
@@ -649,67 +501,7 @@ section{
     resize:vertical;
 }
 
-.form-group input:focus,
-.form-group textarea:focus{
-    border-color: var(--accent-muted);
-    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
-}
-
-/* ================= SIK SORULAN SORULAR (FAQ ACCORDION) ================= */
-.faq-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.faq-item {
-    background: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    margin-bottom: 12px;
-    overflow: hidden;
-    transition: var(--transition-smooth);
-}
-
-.faq-question {
-    padding: 18px 22px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 16px;
-    color: white;
-}
-
-.faq-question span {
-    transition: transform 0.3s ease;
-    color: var(--text-muted);
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    padding: 0 22px;
-    color: var(--text-muted);
-    font-size: 14px;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-}
-
-.faq-item.active {
-    border-color: var(--accent-muted);
-}
-
-.faq-item.active .faq-answer {
-    max-height: 200px;
-    padding: 0 22px 20px 22px;
-}
-
-.faq-item.active .faq-question span {
-    transform: rotate(45deg);
-    color: white;
-}
-
-/* ================= TOAST BİLDİRİM SİSTEMİ ================= */
+/* ================= TOAST & SEPET ================= */
 #toast-container {
     position: fixed;
     bottom: 30px;
@@ -726,32 +518,19 @@ section{
     color: white;
     padding: 14px 22px;
     border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.8);
     font-size: 14px;
     font-weight: 500;
     display: flex;
     align-items: center;
     gap: 10px;
-    animation: slideInRight 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
 }
 
-@keyframes slideInRight {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes fadeOut {
-    to { opacity: 0; transform: translateY(10px); }
-}
-
-/* ================= CART OVERLAY ================= */
 .overlay{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.8);
     z-index:4000;
     display:none;
-    backdrop-filter: blur(5px);
 }
 
 .overlay.active{
@@ -781,66 +560,12 @@ section{
     margin-bottom: 20px;
 }
 
-.cart-panel-header h3 {
-    font-size: 18px;
-    color: white;
-}
-
 .close-cart{
     background:none;
     border:none;
     color: var(--text-muted);
     font-size:24px;
     cursor:pointer;
-}
-
-.close-cart:hover {
-    color: white;
-}
-
-.cart-items-container {
-    flex-grow: 1;
-    overflow-y: auto;
-}
-
-.cart-item{
-    padding:16px 0;
-    border-bottom:1px solid var(--border-color);
-}
-
-.cart-item-top{
-    display:flex;
-    justify-content:space-between;
-    align-items: center;
-}
-
-.remove-btn{
-    background:none;
-    border:none;
-    color: #a3a3a3;
-    cursor:pointer;
-    font-size: 13px;
-    font-weight: 500;
-}
-
-.remove-btn:hover {
-    color: #ffffff;
-    text-decoration: underline;
-}
-
-.cart-summary {
-    border-top: 1px solid var(--border-color);
-    padding-top: 20px;
-    margin-top: 20px;
-}
-
-.cart-total{
-    display:flex;
-    justify-content:space-between;
-    font-size:20px;
-    font-weight:bold;
-    margin-bottom:20px;
-    color: white;
 }
 
 .checkout-btn{
@@ -852,15 +577,8 @@ section{
     color:#050505;
     font-weight:bold;
     cursor:pointer;
-    transition: var(--transition-smooth);
-    font-size: 15px;
 }
 
-.checkout-btn:hover {
-    background: #cbd5e1;
-}
-
-/* ================= FOOTER ================= */
 footer{
     border-top: 1px solid var(--border-color);
     background: var(--bg-secondary);
@@ -881,391 +599,198 @@ footer p {
 </head>
 <body>
 
-<!-- BİLDİRİM KONTEYNERİ -->
 <div id="toast-container"></div>
 
-<!-- REKLAM & DUYURU ŞERİDİ -->
 <div class="promo-banner">
-    <div class="promo-text" data-i18n="promoText">◼ KÖMÜR GRİSİ & OBSİDİYEN SİYAH ESTETİK • KeenLogo Tasarım Stüdyoları Aktif • Özel ve Hazır Logo Konseptleri • Visa Kart Entegrasyonu Uyumlu!</div>
+    <div class="promo-text">◼ KÖMÜR GRİSİ & OBSİDİYEN SİYAH ESTETİK • KeenLogo Tasarım Stüdyoları Aktif • Hazır Logo Konseptleri • Visa Kart Uyumlu!</div>
 </div>
 
-<!-- HEADER / NAVBAR -->
 <header>
     <nav class="navbar">
         <div class="nav-left">
-            <button class="menu-btn" onclick="toggleSidebar()" aria-label="Menü">☰</button>
+            <button class="menu-btn" onclick="toggleSidebar()">☰</button>
             <a href="#" class="logo">Keen<span>Logo</span></a>
         </div>
         
         <div class="nav-links-desktop">
-            <a href="#hazir-logolar" data-i18n="navReadyLogos">Hazır Logolar</a>
-            <a href="#ozel-isim" data-i18n="navNameConcept">İsim & Konsept</a>
-            <a href="#sss" data-i18n="navFaq">S.S.S.</a>
-            <a href="#iletisim" data-i18n="navCustomDesign">Özel Tasarım</a>
+            <a href="#hazir-logolar">Hazır Logolar</a>
+            <a href="#ozel-isim">İsim & Konsept</a>
+            <a href="#iletisim">Özel Tasarım</a>
         </div>
 
         <div class="nav-right-actions">
-            <button class="lang-switch" id="langSwitchBtn" onclick="toggleLanguage()">EN</button>
             <button class="cart-button" onclick="openCart()">
-                🛒 <span data-i18n="cartText">Sepet</span> <span class="cart-count" id="cartCount">0</span>
+                🛒 Sepet <span class="cart-count" id="cartCount">0</span>
             </button>
         </div>
     </nav>
 </header>
 
-<!-- YAN MENÜ (SIDEBAR) -->
 <div class="sidebar" id="sidebar">
     <div class="sidebar-header">
-        <h2 data-i18n="sidebarTitle">Menü</h2>
+        <h2>Menü</h2>
         <button class="close-sidebar" onclick="toggleSidebar()">&times;</button>
     </div>
     <div class="sidebar-links">
-        <a href="#hazir-logolar" onclick="toggleSidebar()" data-i18n="navReadyLogos">🎨 Hazır Logolar</a>
-        <a href="#ozel-isim" onclick="toggleSidebar()" data-i18n="navNameConcept">💡 Firma İsim Önerisi</a>
-        <a href="#sss" onclick="toggleSidebar()" data-i18n="navFaq">❓ Sık Sorulan Sorular</a>
-        <a href="#iletisim" onclick="toggleSidebar()" data-i18n="navCustomDesign">💬 Doğrudan Mesaj / Talep</a>
-        <a href="#" onclick="openCart(); toggleSidebar();" data-i18n="openCartText">🛒 Sepeti Aç</a>
+        <a href="#hazir-logolar" onclick="toggleSidebar()">🎨 Hazır Logolar</a>
+        <a href="#ozel-isim" onclick="toggleSidebar()">💡 Firma İsim Önerisi</a>
+        <a href="#iletisim" onclick="toggleSidebar()">💬 Doğrudan Mesaj / Talep</a>
+        <a href="#" onclick="openCart(); toggleSidebar();">🛒 Sepeti Aç</a>
     </div>
 </div>
 
-<!-- HERO BÖLÜMÜ -->
 <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-        <span class="badge" data-i18n="heroBadge">KeenLogo Siyah-Gri Stüdyo Koleksiyonu</span>
-        <h1 data-i18n="heroTitle">Sizin Markanız.<br><span>Sizin Kimliğiniz.</span></h1>
-        <p data-i18n="heroDesc">İster hazır logolarımızdan birini seçin, ister tamamen firmanıza özel yeni bir tasarım ve marka ismi talep edin.</p>
+        <span class="badge">KeenLogo Siyah-Gri Stüdyo Koleksiyonu</span>
+        <h1>Sizin Markanız.<br><span>Sizin Kimliğiniz.</span></h1>
+        <p>İster hazır logolarımızdan birini seçin, ister tamamen firmanıza özel yeni bir tasarım ve marka ismi talep edin.</p>
         <div class="hero-buttons">
-            <a href="#hazir-logolar" class="primary-btn" data-i18n="heroBtn1">Vitrine Göz At</a>
-            <a href="#iletisim" class="secondary-btn" data-i18n="heroBtn2">Özel İstek Gönder</a>
+            <a href="#hazir-logolar" class="primary-btn">Vitrine Göz At</a>
+            <a href="#iletisim" class="secondary-btn">Özel İstek Gönder</a>
         </div>
     </div>
 </section>
 
-<!-- GÜVEN UNSURLARI -->
-<section style="padding-top: 40px; padding-bottom: 20px;">
-    <div class="features-grid">
-        <div class="feature-card">
-            <div class="feature-icon">◼</div>
-            <div class="feature-text">
-                <h4 data-i18n="feat1Title">Tam Koruma</h4>
-                <p data-i18n="feat1Desc">Satın alınan her konsept sadece size özel tescillenir.</p>
-            </div>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <div class="feature-text">
-                <h4 data-i18n="feat2Title">Hızlı Teslimat</h4>
-                <p data-i18n="feat2Desc">Tüm vektörel dosyalar e-posta adresinize hızla iletilir.</p>
-            </div>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">💳</div>
-            <div class="feature-text">
-                <h4 data-i18n="feat3Title">Güvenli Ödeme</h4>
-                <p data-i18n="feat3Desc">Uluslararası Visa kartları ve güvenli yöntemlerle uyumlu.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- HAZIR LOGOLAR VİTRİNİ (TEK VE NET İLAN) -->
+<!-- VİTRİN - TÜM ÜRÜNLER (3 ADET) -->
 <section id="hazir-logolar">
     <div class="section-title">
-        <h2 data-i18n="storeTitle">Hazır Logolar</h2>
-        <p data-i18n="storeDesc">Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.</p>
+        <h2>Hazır Logolar</h2>
+        <p>Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.</p>
     </div>
 
     <div class="products">
-        <!-- TEK, NET VE DÜZGÜN GÖRÜNEN TURUNCU DAĞ İLANI -->
+        <!-- Ürün 1 -->
         <div class="product">
             <div class="product-image">
-                <img src="1000275188_4.jpg" alt="Orange Alpine Mountain Logo">
+                <img src="logo.jpg" alt="Turuncu Dağ Logosu">
                 <div class="blur-overlay">
-                    <span data-i18n="protectBadge">KEENLOGO KORUMASI</span>
+                    <span>KEENLOGO KORUMASI</span>
                 </div>
             </div>
             <div class="product-info">
-                <h3 data-i18n="prod2Title">Turuncu Dağ Konsepti</h3>
-                <p data-i18n="prod2Desc">Siyah arka plan üzerinde turuncu detaylı dağ ve doğa konseptli modern logo.</p>
+                <h3>Turuncu Dağ Konsepti</h3>
+                <p>Siyah arka plan üzerinde turuncu detaylı dağ ve doğa konseptli modern logo.</p>
                 <div class="price-row">
                     <span class="price">5 AZN</span>
-                    <button class="buy-btn" onclick="addToCart('Turuncu Dağ Konsepti', 5)" data-i18n="addToCartBtn">Sepete Ekle</button>
+                    <button class="buy-btn" onclick="addToCart('Turuncu Dağ Konsepti', 5, 'AZN')">Sepete Ekle</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ürün 2 (Galaksi Logosu) -->
+        <div class="product">
+            <div class="product-image">
+                <img src="logogal.png" alt="Altın Galaksi Logosu">[span_1](start_span)[span_1](end_span)
+                <div class="blur-overlay">
+                    <span>KEENLOGO KORUMASI</span>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>Altın Galaksi Konsepti</h3>[span_2](start_span)[span_2](end_span)
+                <p>Koyu arka plan üzerinde ışıltılı altın rengi parçacıklardan oluşan spiral galaksi ve kozmik logo konsepti.</p>[span_3](start_span)[span_3](end_span)
+                <div class="price-row">
+                    <span class="price">5$</span>
+                    <button class="buy-btn" onclick="addToCart('Altın Galaksi Konsepti', 5, '$')">Sepete Ekle</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ürün 3 (Yeni Eklenen Çember Dağ Logosu) -->
+        <div class="product">
+            <div class="product-image">
+                <img src="logomou.png" alt="Turuncu Çember Dağ Logosu">[span_4](start_span)[span_4](end_span)
+                <div class="blur-overlay">
+                    <span>KEENLOGO KORUMASI</span>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>Turuncu Çember Dağ Konsepti</h3>[span_5](start_span)[span_5](end_span)
+                <p>Siyah arka plan üzerinde çember içinde turuncu hatlı dağ ve çam ağaçları temalı modern logo.</p>[span_6](start_span)[span_6](end_span)
+                <div class="price-row">
+                    <span class="price">5 AZN</span>
+                    <button class="buy-btn" onclick="addToCart('Turuncu Çember Dağ Konsepti', 5, 'AZN')">Sepete Ekle</button>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ÖZEL İSİM VE KONSEPT TALEBİ -->
 <section id="ozel-isim">
     <div class="form-grid">
         <div class="form-box">
-            <h3 data-i18n="form1Title">Firma İsmi & Konsept Talebi</h3>
-            <p data-i18n="form1Desc">İşletmeniz için en uygun ismi bulalım ve sıfırdan konsept oluşturalım.</p>
-            
+            <h3>Firma İsmi & Konsept Talebi</h3>
+            <p>İşletmeniz için en uygun ismi bulalım ve sıfırdan konsept oluşturalım.</p>
             <div class="form-group">
-                <label data-i18n="labelSector">Faaliyet Alanı (Sektör)</label>
+                <label>Faaliyet Alanı (Sektör)</label>
                 <input type="text" id="customSector" placeholder="Örn: E-ticaret, Kafe, Yazılım...">
             </div>
-            
             <div class="form-group">
-                <label data-i18n="labelNotes">Beklentileriniz / Detaylar</label>
+                <label>Beklentileriniz / Detaylar</label>
                 <textarea id="customNotes" placeholder="İstediğiniz tarzı veya anahtar kelimeleri yazın..."></textarea>
             </div>
-
-            <button class="primary-btn" style="width: 100%; text-align: center; cursor: pointer;" onclick="sendCustomNameRequest()" data-i18n="sendReqBtn">Talebi Gönder</button>
+            <button class="primary-btn" style="width: 100%; text-align: center; cursor: pointer;" onclick="sendCustomNameRequest()">Talebi Gönder</button>
         </div>
 
-        <!-- DOĞRUDAN İLETİŞİM / MESAJ FORMU -->
         <div class="form-box" id="iletisim">
-            <h3 data-i18n="form2Title">Özel Tasarım Görüşmesi</h3>
-            <p data-i18n="form2Desc">Aklınızdaki özel projeyi bize doğrudan iletin.</p>
-            
+            <h3>Özel Tasarım Görüşmesi</h3>
+            <p>Aklınızdaki özel projeyi bize doğrudan iletin.</p>
             <div class="form-group">
-                <label data-i18n="labelSubject">Konu Başlığı</label>
+                <label>Konu Başlığı</label>
                 <input type="text" id="msgSubject" placeholder="Özel Logo Tasarımı">
             </div>
-            
             <div class="form-group">
-                <label data-i18n="labelMessage">Mesajınız / Tasarım Detayları</label>
+                <label>Mesajınız / Tasarım Detayları</label>
                 <textarea id="msgBody" placeholder="Detaylı isteklerinizi buraya yazın..."></textarea>
             </div>
-
-            <button class="primary-btn" style="width: 100%; text-align: center; cursor: pointer;" onclick="sendDirectMessage()" data-i18n="sendMsgBtn">Mesajı Gönder</button>
+            <button class="primary-btn" style="width: 100%; text-align: center; cursor: pointer;" onclick="sendDirectMessage()">Mesajı Gönder</button>
         </div>
     </div>
 </section>
 
-<!-- SIK SORULAN SORULAR (FAQ) -->
-<section id="sss">
-    <div class="section-title" style="text-align: center;">
-        <h2 data-i18n="faqTitle">Sık Sorulan Sorular</h2>
-        <p data-i18n="faqDesc">Merak ettiğiniz tüm detayları sizin için yanıtladık.</p>
-    </div>
-
-    <div class="faq-container">
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <span data-i18n="faq1Q">Logoyu satın aldıktan sonra hangi formatlarda alacağım?</span> <span>+</span>
-            </div>
-            <div class="faq-answer" data-i18n="faq1A">
-                Satın aldığınız logolar yüksek çözünürlüklü vektörel formatlarda (AI, EPS, PNG ve PDF) e-posta adresinize gönderilir.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <span data-i18n="faq2Q">Ödeme sürecinde Visa kartlar geçerli mi?</span> <span>+</span>
-            </div>
-            <div class="faq-answer" data-i18n="faq2A">
-                Evet, Azerbaycan ve uluslararası Visa kartlarınızla güvenli bir şekilde e-posta sipariş süreci üzerinden işlem yapabilirsiniz.
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="toggleFaq(this)">
-                <span data-i18n="faq3Q">Özel konsept tasarım süreci nasıl işliyor?</span> <span>+</span>
-            </div>
-            <div class="faq-answer" data-i18n="faq3A">
-                Form aracılığıyla gönderdiğiniz sektör ve tarz detayları incelenir, sizinle iletişime geçilerek sıfırdan marka kimliği oluşturulur.
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- SEPET OVERLAY -->
 <div class="overlay" id="cartOverlay">
     <div class="cart-panel">
         <div class="cart-panel-header">
-            <h3 data-i18n="cartPanelTitle">Sepetiniz</h3>
+            <h3>Sepetiniz</h3>
             <button class="close-cart" onclick="closeCart()">&times;</button>
         </div>
-        
         <div class="cart-items-container" id="cartItems"></div>
-
         <div class="cart-summary">
-            <div class="cart-total">
-                <span data-i18n="totalLabel">Toplam:</span>
-                <span id="cartTotal">0 AZN</span>
+            <div class="cart-total" style="display:flex; justify-content:space-between; font-size:20px; font-weight:bold; margin-bottom:20px; color:white;">
+                <span>Toplam:</span>
+                <span id="cartTotal">0</span>
             </div>
-            <button class="checkout-btn" onclick="checkout()" data-i18n="checkoutBtn">Siparişi Tamamla (E-posta ile Gönder)</button>
+            <button class="checkout-btn" onclick="checkout()">Siparişi Tamamla (E-posta ile Gönder)</button>
         </div>
     </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
     <a href="#" class="logo">Keen<span>Logo</span></a>
-    <p data-i18n="footerSub">Siyah-Gri Digital Branding & Design Stüdyosu</p>
-    <p style="margin-top:12px; font-size: 13px;" data-i18n="footerRights">© 2026 KeenLogo. Bütün hakları saklıdır.</p>
+    <p>Siyah-Gri Digital Branding & Design Stüdyosu</p>
+    <p style="margin-top:12px; font-size: 13px;">© 2026 KeenLogo. Bütün hakları saklıdır.</p>
 </footer>
 
 <script>
-/* ================= ÇOKLU DİL SÖZLÜĞÜ (TR / EN) ================= */
-const translations = {
-    tr: {
-        promoText: "◼ KÖMÜR GRİSİ & OBSİDİYEN SİYAH ESTETİK • KeenLogo Tasarım Stüdyoları Aktif • Özel ve Hazır Logo Konseptleri • Visa Kart Entegrasyonu Uyumlu!",
-        navReadyLogos: "Hazır Logolar",
-        navNameConcept: "İsim & Konsept",
-        navFaq: "S.S.S.",
-        navCustomDesign: "Özel Tasarım",
-        cartText: "Sepet",
-        openCartText: "🛒 Sepeti Aç",
-        sidebarTitle: "Menü",
-        heroBadge: "KeenLogo Siyah-Gri Stüdyo Koleksiyonu",
-        heroTitle: "Sizin Markanız.<br><span>Sizin Kimliğiniz.</span>",
-        heroDesc: "İster hazır logolarımızdan birini seçin, ister tamamen firmanıza özel yeni bir tasarım ve marka ismi talep edin.",
-        heroBtn1: "Vitrine Göz At",
-        heroBtn2: "Özel İstek Gönder",
-        feat1Title: "Tam Koruma",
-        feat1Desc: "Satın alınan her konsept sadece size özel tescillenir.",
-        feat2Title: "Hızlı Teslimat",
-        feat2Desc: "Tüm vektörel dosyalar e-posta adresinize hızla iletilir.",
-        feat3Title: "Güvenli Ödeme",
-        feat3Desc: "Uluslararası Visa kartları ve güvenli yöntemlerle uyumlu.",
-        storeTitle: "Hazır Logolar",
-        storeDesc: "Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.",
-        protectBadge: "KEENLOGO KORUMASI",
-        prod2Title: "Turuncu Dağ Konsepti",
-        prod2Desc: "Siyah arka plan üzerinde turuncu detaylı dağ ve doğa konseptli modern logo.",
-        addToCartBtn: "Sepete Ekle",
-        form1Title: "Firma İsmi & Konsept Talebi",
-        form1Desc: "İşletmeniz için en uygun ismi bulalım ve sıfırdan konsept oluşturalım.",
-        labelSector: "Faaliyet Alanı (Sektör)",
-        labelNotes: "Beklentileriniz / Detaylar",
-        sendReqBtn: "Talebi Gönder",
-        form2Title: "Özel Tasarım Görüşmesi",
-        form2Desc: "Aklınızdaki özel projeyi bize doğrudan iletin.",
-        labelSubject: "Konu Başlığı",
-        labelMessage: "Mesajınız / Tasarım Detayları",
-        sendMsgBtn: "Mesajı Gönder",
-        faqTitle: "Sık Sorulan Sorular",
-        faqDesc: "Merak ettiğiniz tüm detayları sizin için yanıtladık.",
-        faq1Q: "Logoyu satın aldıktan sonra hangi formatlarda alacağım?",
-        faq1A: "Satın aldığınız logolar yüksek çözünürlüklü vektörel formatlarda (AI, EPS, PNG ve PDF) e-posta adresinize gönderilir.",
-        faq2Q: "Ödeme sürecinde Visa kartlar geçerli mi?",
-        faq2A: "Evet, Azerbaycan ve uluslararası Visa kartlarınızla güvenli bir şekilde e-posta sipariş süreci üzerinden işlem yapabilirsiniz.",
-        faq3Q: "Özel konsept tasarım süreci nasıl işliyor?",
-        faq3A: "Form aracılığıyla gönderdiğiniz sektör ve tarz detayları incelenir, sizinle iletişime geçilerek sıfırdan marka kimliği oluşturulur.",
-        cartPanelTitle: "Sepetiniz",
-        totalLabel: "Toplam:",
-        checkoutBtn: "Siparişi Tamamla (E-posta ile Gönder)",
-        footerSub: "Siyah-Gri Digital Branding & Design Stüdyosu",
-        footerRights: "© 2026 KeenLogo. Bütün hakları saklıdır.",
-        emptyCart: "Sepetiniz boş."
-    },
-    en: {
-        promoText: "◼ CHARCOAL GRAY & OBSIDIAN BLACK AESTHETIC • KeenLogo Design Studios Active • Custom & Ready Logo Concepts • Visa Card Integration Compatible!",
-        navReadyLogos: "Ready Logos",
-        navNameConcept: "Name & Concept",
-        navFaq: "FAQ",
-        navCustomDesign: "Custom Design",
-        cartText: "Cart",
-        openCartText: "🛒 Open Cart",
-        sidebarTitle: "Menu",
-        heroBadge: "KeenLogo Black-Gray Studio Collection",
-        heroTitle: "Your Brand.<br><span>Your Identity.</span>",
-        heroDesc: "Choose from our ready-made logos or request a completely custom design and brand name tailored to your business.",
-        heroBtn1: "Browse Showcase",
-        heroBtn2: "Send Custom Request",
-        feat1Title: "Full Protection",
-        feat1Desc: "Every purchased concept is registered exclusively to you.",
-        feat2Title: "Fast Delivery",
-        feat2Desc: "All vector files are quickly delivered to your email address.",
-        feat3Title: "Secure Payment",
-        feat3Desc: "Compatible with international Visa cards and secure methods.",
-        storeTitle: "Ready Logos",
-        storeDesc: "Choose any of the custom design concepts in our showcase.",
-        protectBadge: "KEENLOGO PROTECTION",
-        prod2Title: "Alpine Orange Edition",
-        prod2Desc: "Modern mountain and nature concept logo with orange details on a black background.",
-        addToCartBtn: "Add to Cart",
-        form1Title: "Company Name & Concept Request",
-        form1Desc: "Let's find the best name for your business and build a concept from scratch.",
-        labelSector: "Industry (Sector)",
-        labelNotes: "Your Expectations / Details",
-        sendReqBtn: "Send Request",
-        form2Title: "Custom Design Discussion",
-        form2Desc: "Directly share your custom project idea with us.",
-        labelSubject: "Subject",
-        labelMessage: "Your Message / Design Details",
-        sendMsgBtn: "Send Message",
-        faqTitle: "Frequently Asked Questions",
-        faqDesc: "We answered all the details you might wonder about.",
-        faq1Q: "In which formats will I receive the logo after purchase?",
-        faq1A: "The logos you purchase are sent to your email address in high-resolution vector formats (AI, EPS, PNG, and PDF).",
-        faq2Q: "Are Visa cards valid during the payment process?",
-        faq2A: "Yes, you can securely process payments via email order using your Visa cards.",
-        faq3Q: "How does the custom concept design process work?",
-        faq3A: "The sector and style details you submit via the form are reviewed, and a brand identity is built from scratch by contacting you.",
-        cartPanelTitle: "Your Cart",
-        totalLabel: "Total:",
-        checkoutBtn: "Complete Order (Send via Email)",
-        footerSub: "Black-Gray Digital Branding & Design Studio",
-        footerRights: "© 2026 KeenLogo. All rights reserved.",
-        emptyCart: "Your cart is empty."
-    }
-};
-
-let currentLang = localStorage.getItem("keen_lang") || "tr";
-
-function toggleLanguage() {
-    currentLang = currentLang === "tr" ? "en" : "tr";
-    localStorage.setItem("keen_lang", currentLang);
-    applyLanguage();
-}
-
-function applyLanguage() {
-    const btn = document.getElementById("langSwitchBtn");
-    btn.innerText = currentLang === "tr" ? "EN" : "TR";
-
-    document.querySelectorAll("[data-i18n]").forEach(el => {
-        const key = el.getAttribute("data-i18n");
-        if (translations[currentLang][key]) {
-            el.innerHTML = translations[currentLang][key];
-        }
-    });
-    updateCartUI();
-}
-
-/* ================= TOAST BİLDİRİM FONKSİYONU ================= */
 function showToast(message) {
     const container = document.getElementById("toast-container");
     const toast = document.createElement("div");
     toast.className = "toast";
     toast.innerHTML = `<span>◼</span> ${message}`;
     container.appendChild(toast);
-    setTimeout(() => {
-        toast.remove();
-    }, 3000);
+    setTimeout(() => toast.remove(), 3000);
 }
 
-/* ================= YAN MENÜ (SIDEBAR) İŞLEMLERİ ================= */
 function toggleSidebar() {
     document.getElementById("sidebar").classList.toggle("active");
 }
 
-/* ================= FAQ AKORDİYON İŞLEMLERİ ================= */
-function toggleFaq(element) {
-    const item = element.parentElement;
-    const isActive = item.classList.contains("active");
-    
-    document.querySelectorAll(".faq-item").forEach(i => i.classList.remove("active"));
-    
-    if (!isActive) {
-        item.classList.add("active");
-    }
-}
-
-/* ================= SEPET SİSTEMİ ================= */
 let cart = JSON.parse(localStorage.getItem("keen_cart")) || [];
 
-function addToCart(name, price){
-    cart.push({ name, price });
+function addToCart(name, price, currency){
+    cart.push({ name, price, currency });
     saveCart();
-    const msg = currentLang === "tr" ? `"${name}" sepetinize eklendi.` : `"${name}" added to your cart.`;
-    showToast(msg);
+    showToast(`"${name}" sepetinize eklendi.`);
 }
 
 function removeFromCart(index){
@@ -1285,29 +810,35 @@ function updateCartUI(){
 
     count.innerText = cart.length;
     items.innerHTML = "";
-    let total = 0;
+    
+    let totalsByCurrency = {};
 
     if(cart.length === 0){
-        const emptyText = translations[currentLang].emptyCart;
-        items.innerHTML = `<p style='color:var(--text-muted); padding:30px 0; text-align:center;'>${emptyText}</p>`;
+        items.innerHTML = `<p style='color:var(--text-muted); padding:30px 0; text-align:center;'>Sepetiniz boş.</p>`;
+        totalElement.innerText = "0";
+        return;
     }
 
     cart.forEach((item, index) => {
-        total += item.price;
+        if(!totalsByCurrency[item.currency]) totalsByCurrency[item.currency] = 0;
+        totalsByCurrency[item.currency] += item.price;
+
         const div = document.createElement("div");
         div.className = "cart-item";
-        const removeText = currentLang === "tr" ? "Sil" : "Remove";
+        div.style.padding = "16px 0";
+        div.style.borderBottom = "1px solid var(--border-color)";
         div.innerHTML = `
-            <div class="cart-item-top">
+            <div style="display:flex; justify-content:space-between; align-items: center;">
                 <strong style="font-size:14px; color:white;">${item.name}</strong>
-                <button class="remove-btn" onclick="removeFromCart(${index})">${removeText}</button>
+                <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#a3a3a3; cursor:pointer; font-size:13px;">Sil</button>
             </div>
-            <p style="color:var(--text-muted); margin-top:4px; font-size:13px;">${item.price} AZN</p>
+            <p style="color:var(--text-muted); margin-top:4px; font-size:13px;">${item.price} ${item.currency}</p>
         `;
         items.appendChild(div);
     });
 
-    totalElement.innerText = total + " AZN";
+    let totalText = Object.keys(totalsByCurrency).map(curr => `${totalsByCurrency[curr]} ${curr}`).join(' + ');
+    totalElement.innerText = totalText;
 }
 
 function openCart(){
@@ -1320,51 +851,34 @@ function closeCart(){
 
 function checkout(){
     if(cart.length === 0){
-        const errText = currentLang === "tr" ? "Lütfen önce sepetinize bir ürün ekleyin." : "Please add an item to your cart first.";
-        showToast(errText);
+        showToast("Lütfen önce sepetinize bir ürün ekleyin.");
         return;
     }
-    
-    let itemsList = cart.map(i => `- ${i.name} (${i.price} AZN)`).join('\n');
-    let total = cart.reduce((sum, i) => sum + i.price, 0);
-    
-    let subject = encodeURIComponent("Yeni Logo Siparişi - KeenLogo");
-    let body = encodeURIComponent(`Merhaba KeenLogo,\n\nAşağıdaki hazır logoları satın almak istiyorum:\n\n${itemsList}\n\nToplam Tutar: ${total} AZN`);
-    
-    window.location.href = `mailto:keendesignlogo@gmail.com?subject=${subject}&body=${body}`;
+    let itemsList = cart.map(i => `- ${i.name} (${i.price} ${i.currency})`).join('\n');
+    let totalText = document.getElementById("cartTotal").innerText;
+    window.location.href = `mailto:keendesignlogo@gmail.com?subject=${encodeURIComponent("Yeni Logo Siparişi")}&body=${encodeURIComponent(`Merhaba,\n\nŞu logoları satın almak istiyorum:\n\n${itemsList}\n\nToplam:${totalText}`)}`;
 }
 
-/* ================= MAİL / TALEP FONKSİYONLARI ================= */
 function sendCustomNameRequest() {
     const sector = document.getElementById("customSector").value.trim();
     const notes = document.getElementById("customNotes").value.trim();
-
     if(!sector && !notes) {
-        const errText = currentLang === "tr" ? "Lütfen faaliyet alanını veya beklentilerinizi belirtin." : "Please specify your industry or expectations.";
-        showToast(errText);
+        showToast("Lütfen alanları doldurun.");
         return;
     }
-    const subject = encodeURIComponent("Yeni Firma Adı ve Konsept Talebi");
-    const body = encodeURIComponent(`Merhaba KeenLogo,\n\nŞirketim için özel ad ve konsept talep ediyorum:\n\n• Faaliyet Alanı: ${sector}\n• Beklentiler / Detaylar: ${notes}`);
-    window.location.href = `mailto:keendesignlogo@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:keendesignlogo@gmail.com?subject=${encodeURIComponent("Firma Adı Talebi")}&body=${encodeURIComponent(`Sektör: ${sector}\nNotlar:${notes}`)}`;
 }
 
 function sendDirectMessage() {
-    const msgSubject = document.getElementById("msgSubject").value.trim() || "Özel Tasarım Görüşmesi";
     const msgBody = document.getElementById("msgBody").value.trim();
-
     if(!msgBody) {
-        const errText = currentLang === "tr" ? "Lütfen tasarım detaylarını içeren bir mesaj yazın." : "Please write a message containing design details.";
-        showToast(errText);
+        showToast("Lütfen mesaj yazın.");
         return;
     }
-    const subject = encodeURIComponent(msgSubject);
-    const body = encodeURIComponent(msgBody);
-    window.location.href = `mailto:keendesignlogo@gmail.com?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:keendesignlogo@gmail.com?subject=${encodeURIComponent("Özel Tasarım Mesajı")}&body=${encodeURIComponent(msgBody)}`;
 }
 
-/* ================= BAŞLANGIÇ ================= */
-applyLanguage();
+updateCartUI();
 </script>
 </body>
 </html>
