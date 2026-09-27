@@ -10,12 +10,10 @@
     --bg-dark: #090a0f;
     --card-bg: #12141d;
     --border-color: #222634;
-    /* Turuncu yerine Mavi ve Gri tonlara geçildi */
     --accent-blue: #3b82f6; 
     --accent-blue-hover: #2563eb;
     --text-main: #f3f4f6;
     --text-muted: #9ca3af;
-    --accent-white: #e5e7eb;
 }
 
 *{
@@ -37,33 +35,9 @@ body{
     overflow-x: hidden;
 }
 
-/* ================= ARKA PLAN VE ANİMASYON (Aşağıdan Yukarı) ================= */
-
-.bg-pattern {
-    position: fixed;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    /* Yeni görsel eklendi */
-    background-image: url('1000274954_2.jpg'); 
-    background-size: 300px;
-    opacity: 0.15; /* Hafif soluk */
-    filter: blur(5px); /* Rahatsız etmesin diye blur */
-    z-index: -1;
-    /* Aşağıdan yukarıya süzülme animasyonu (yön değiştirildi) */
-    animation: scrollBackgroundUp 15s linear infinite;
-}
-
-@keyframes scrollBackgroundUp {
-    0% { background-position: 0 300px; } /* Başlangıç noktası aşağıda */
-    100% { background-position: 0 0; }   /* Bitiş noktası yukarıda */
-}
-
 /* ================= REKLAM ŞERİDİ (PROMO BANNER) ================= */
 
 .promo-banner {
-    /* Renkler yeni temaya uyarlandı */
     background: linear-gradient(90deg, #1e3a8a, #0f172a, #3b82f6);
     color: white;
     padding: 10px 0;
@@ -143,7 +117,6 @@ header{
     color: var(--accent-blue);
 }
 
-/* Ana menüdeki (header ortasındaki) linkler kaldırıldı */
 .desktop-nav {
     display: none; 
 }
@@ -226,7 +199,6 @@ header{
     gap: 15px;
 }
 
-/* Tüm hizmetler artık sadece burada */
 .sidebar-links a {
     color: var(--text-main);
     text-decoration: none;
@@ -247,20 +219,42 @@ header{
     color: var(--accent-blue);
 }
 
-/* ================= HERO ================= */
+/* ================= HERO (İstediğin Arka Plan ve Animasyon) ================= */
 
 .hero{
-    min-height:500px;
+    position: relative;
+    min-height:550px;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
     padding:80px 20px;
-    /* Hero gradyanı yeni temaya uyumlandırıldı */
-    background: radial-gradient(circle at center, rgba(15, 23, 42, 0.6) 0%, transparent 70%);
+    overflow: hidden;
+}
+
+/* Hero alanına özel aşağı süzülen, blurlu arka plan */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('1000274954_3.jpg'); /* İstediğin arka plan görseli */
+    background-size: 300px;
+    opacity: 0.18; /* Hafif soluk */
+    filter: blur(5px); /* Rahatsız etmesin diye blur */
+    z-index: 1;
+    animation: scrollHeroDown 18s linear infinite; /* Yavaşça aşağı süzülen animasyon */
+}
+
+@keyframes scrollHeroDown {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 300px; }
 }
 
 .hero-content{
+    position: relative;
+    z-index: 2;
     max-width:850px;
 }
 
@@ -370,18 +364,26 @@ section{
     justify-content:center;
     position:relative;
     overflow:hidden;
-    padding: 20px;
 }
 
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: hue-rotate(150deg) saturate(1.5);
+}
+
+/* Koruması yazısı tam ortalandı */
 .blur-overlay {
     position: absolute;
-    bottom: 20px;
-    left: 10%;
-    right: 10%;
-    height: 80px;
-    background: rgba(0, 0, 0, 0.2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -391,8 +393,8 @@ section{
 }
 
 .blur-overlay span {
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
     font-weight: bold;
     letter-spacing: 2px;
 }
@@ -569,207 +571,6 @@ section{
 }
 
 /* ================= FOOTER ================= */
-
-footer{
-    border-top:1px solid var(--border-color);
-    padding:40px 20px;
-    text-align:center;
-    color: var(--text-muted);
-    background: var(--card-bg);
-}
-
-</style>
-</head>
-
-<body>
-
-<!-- ARKA PLAN GÖRSELİ VE ANİMASYONU (Aşağıdan Yukarı) -->
-<div class="bg-pattern"></div>
-
-<!-- ================= REKLAM ŞERİDİ ================= -->
-<div class="promo-banner">
-    <div class="promo-text">
-        🚀 Özel Kampanya: Tasarım siparişlerinizde bu haftaya özel indirimler! &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 🎨 Kendi firmanız için en iyi logoyu hemen seçin!
-    </div>
-</div>
-
-<!-- ================= HEADER ================= -->
-<header>
-<div class="navbar">
-
-<div class="nav-left">
-    <!-- SOL ÜST YAN MENÜ AÇMA BUTONU -->
-    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-
-    <div class="logo" onclick="window.scrollTo(0,0)" style="cursor:pointer;">
-        <span>Keen</span>Logo
-    </div>
-</div>
-
-<!-- Masaüstü üst menü linkleri kaldırıldı -->
-
-<button class="cart-button" onclick="openCart()">
-🛒 Səbət <span class="cart-count" id="cartCount">0</span>
-</button>
-</div>
-</header>
-
-
-<!-- ================= YAN MENÜ (SIDEBAR) ================= -->
-<div class="sidebar" id="sidebar">
-    <div class="sidebar-header">
-        <h2>Menü</h2>
-        <button class="close-sidebar" onclick="toggleSidebar()">×</button>
-    </div>
-    
-    <div class="sidebar-links">
-        <!-- TÜM HİZMET SEKMELERİ SADECE BURADA -->
-        <a href="#hazir-logolar" onclick="toggleSidebar()">📦 Hazır Logolar (Vitrin)</a>
-        <a href="#kendi-firmani-sec" onclick="toggleSidebar()">💡 Kendi Firmanı Seç</a>
-        <a href="#tasarimin-hakkinda-konus" onclick="toggleSidebar()">🎨 Tasarımın Hakkında Konuş</a>
-    </div>
-</div>
-
-
-<!-- ================= HERO ================= -->
-
-<div class="hero" id="home">
-<div class="hero-content">
-
-<div class="badge">KeenLogo Tasarım Stüdyosu</div>
-
-<h1>Sizin Markanız.<br><span>Sizin Kimliğiniz.</span></h1>
-
-<p>İster hazır logolarımızdan birini seçin, ister tamamen firmanıza özel yeni bir tasarım ve marka ismi talep edin.</p>
-
-<div class="hero-buttons">
-<button class="primary" onclick="document.getElementById('hazir-logolar').scrollIntoView()">Vitrine Göz At</button>
-</div>
-
-</div>
-</div>
-
-
-<!-- ================= HAZIR LOGOLAR (Vitrin) ================= -->
-
-<section id="hazir-logolar">
-<div class="section-title">
-<h2>Hazır Logolar</h2>
-<p>Satışta olan özel tasarım konseptlerimiz.</p>
-</div>
-
-<div class="products">
-<div class="product">
-<div class="product-image">
-    
-    <div class="blur-overlay">
-        <span>KEENLOGO KORUMASI</span>
-    </div>
-
-    <!-- Mavi temaya uyumlu logo örneği (Eski turuncu logo renkleri mavi-beyaz yapıldı) -->
-    <svg viewBox="0 0 300 300" width="220" height="220">
-        <circle cx="150" cy="150" r="135" stroke="#3b82f6" stroke-width="8" fill="none"/>
-        <path d="M 150,80 L 195,160 L 225,125 L 260,185 L 40,185 L 105,120 Z" fill="none" stroke="#e5e7eb" stroke-width="7" stroke-linejoin="round"/>
-        <path d="M 150,110 L 180,165 M 120,135 L 155,185" stroke="#3b82f6" stroke-width="5"/>
-        <path d="M 50,180 L 60,160 L 70,180 M 60,160 L 60,195" stroke="#3b82f6" stroke-width="4"/>
-        <path d="M 70,180 L 80,155 L 90,180 M 80,155 L 80,195" stroke="#3b82f6" stroke-width="4"/>
-        <path d="M 210,180 L 220,155 L 230,180 M 220,155 L 220,195" stroke="#3b82f6" stroke-width="4"/>
-        <path d="M 230,180 L 240,160 L 250,180 M 240,160 L 240,195" stroke="#3b82f6" stroke-width="4"/>
-        <path d="M 40,185 Q 150,220 260,185" stroke="#3b82f6" stroke-width="6" fill="none"/>
-    </svg>
-</div>
-
-<div class="product-info">
-<h3>Mountain & Adventure Logo</h3>
-<p>Dairəvi çərçivədə mavi-bəyaz dağ və meşə konseptli modern minimalist logo.</p>
-<div class="price-row">
-<span class="price">5 AZN</span>
-<button class="buy" onclick="addToCart('Mountain & Adventure Logo', 5)">Səbətə at</button>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-
-<!-- ================= KENDİ FİRMANI SEÇ (Özel İsim) ================= -->
-
-<section id="kendi-firmani-sec">
-<div class="section-title">
-<h2>Kendi firmanı seç</h2>
-<p>İşletmeniz için benzersiz bir ad ve logoya mı ihtiyacınız var?</p>
-</div>
-
-<div class="form-box">
-<p style="color:var(--text-muted); margin-bottom:20px; font-size:14px; text-align:center;">
-Firmanızın faaliyet alanını ve tarzını bize iletin, size özel marka ismi önerileri ve logo fikirleri sunalım.
-</p>
-
-<div class="form-group">
-<label>Faaliyet Alanı (Sektör)</label>
-<input id="customSector" type="text" placeholder="Örn: Teknoloji, Kafe, Giyim, E-Ticaret...">
-</div>
-
-<div class="form-group">
-<label>Hedef Kitle ve Beklentileriniz</label>
-<textarea id="customNotes" placeholder="Markanız nasıl bir his uyandırmalı? Eklemek istediğiniz detaylar..."></textarea>
-</div>
-
-<button class="primary" style="width:100%;" onclick="sendCustomNameRequest()">
-📩 Fikir Talep Et
-</button>
-</div>
-</section>
-
-
-<!-- ================= TASARIMIN HAKKINDA KONUŞ (Özel İletişim) ================= -->
-
-<section id="tasarimin-hakkinda-konus">
-<div class="section-title">
-<h2>Tasarımın hakkında konuş</h2>
-<p>Özel logo siparişleri veya projeleriniz için detayları görüşelim.</p>
-</div>
-
-<div class="form-box">
-<div style="text-align:center; margin-bottom:25px;">
-<span style="font-size:35px;">✉️</span>
-<h3 style="margin-top:8px; color:#fff;">keendesignlogo@gmail.com</h3>
-</div>
-
-<div class="form-group">
-<label>Konu</label>
-<input id="msgSubject" type="text" placeholder="Tasarım talebinizin konusu">
-</div>
-
-<div class="form-group">
-<label>Proje Detayları</label>
-<textarea id="msgBody" placeholder="Logonuzda hangi renkler olmalı? Nasıl bir şekil hayal ediyorsunuz?"></textarea>
-</div>
-
-<button class="primary" style="width:100%;" onclick="sendDirectMessage()">
-📧 İletişime Geç
-</button>
-</div>
-</section>
-
-
-<!-- ================= CART OVERLAY ================= -->
-
-<div class="overlay" id="cartOverlay">
-<div class="cart-panel">
-<button class="close" onclick="closeCart()">×</button>
-<h2>Səbətim</h2>
-<div id="cartItems"></div>
-<div class="cart-total">
-<span>Cəmi:</span>
-<span id="cartTotal">0 AZN</span>
-</div>
-<button class="checkout" onclick="checkout()">Siparişi Tamamla (Gmail)</button>
-</div>
-</div>
-
-
-<!-- ================= FOOTER ================= -->
 
 <footer>
 <div style="display:flex; justify-content:center; align-items:center; gap:8px; margin-bottom:10px;">
