@@ -1,44 +1,1390 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KeenLogo</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 60px 20px;
-            background: #111;
-            color: white;
-        }
+<title>KeenLogo | Logo Marketplace</title>
 
-        h1 {
-            font-size: 45px;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-        p {
-            font-size: 20px;
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        button {
-            padding: 15px 25px;
-            border: none;
-            border-radius: 8px;
-            font-size: 17px;
-            cursor: pointer;
-        }
-    </style>
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#0b0b0b;
+    color:#f2f2f2;
+}
+
+/* ================= HEADER ================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(12,12,12,.96);
+    border-bottom:1px solid #292929;
+    backdrop-filter:blur(12px);
+}
+
+.navbar{
+    max-width:1200px;
+    margin:auto;
+    height:75px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 20px;
+}
+
+.logo{
+    font-size:27px;
+    font-weight:900;
+    letter-spacing:-1px;
+    color:white;
+}
+
+.logo span{
+    color:#888;
+}
+
+nav{
+    display:flex;
+    gap:25px;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    font-size:14px;
+    transition:.2s;
+}
+
+nav a:hover{
+    color:white;
+}
+
+.cart-button{
+    background:#1d1d1d;
+    border:1px solid #333;
+    color:white;
+    padding:11px 17px;
+    border-radius:9px;
+    cursor:pointer;
+}
+
+.cart-count{
+    background:#fff;
+    color:#000;
+    padding:2px 6px;
+    border-radius:20px;
+    font-size:11px;
+    margin-left:5px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:620px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:80px 20px;
+    background:
+        radial-gradient(circle at center,#262626 0%,#101010 35%,#090909 75%);
+}
+
+.hero-content{
+    max-width:850px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    border:1px solid #3b3b3b;
+    background:#151515;
+    border-radius:30px;
+    color:#aaa;
+    font-size:13px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(45px,8vw,85px);
+    line-height:.95;
+    letter-spacing:-5px;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#777;
+}
+
+.hero p{
+    color:#999;
+    font-size:18px;
+    line-height:1.7;
+    max-width:650px;
+    margin:auto;
+}
+
+.hero-buttons{
+    margin-top:35px;
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.primary{
+    background:#fff;
+    color:#000;
+    border:none;
+    padding:15px 25px;
+    border-radius:9px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.secondary{
+    background:#171717;
+    color:#fff;
+    border:1px solid #333;
+    padding:15px 25px;
+    border-radius:9px;
+    cursor:pointer;
+}
+
+/* ================= GENERAL ================= */
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:90px 20px;
+}
+
+.section-title{
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#777;
+}
+
+/* ================= PRODUCTS ================= */
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+}
+
+.product{
+    background:#151515;
+    border:1px solid #292929;
+    border-radius:15px;
+    overflow:hidden;
+    transition:.25s;
+}
+
+.product:hover{
+    transform:translateY(-5px);
+    border-color:#444;
+}
+
+.product-image{
+    height:220px;
+    background:#222;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.logo-art{
+    font-weight:900;
+    font-size:55px;
+    color:#ddd;
+    letter-spacing:-4px;
+}
+
+.logo-art.two{
+    font-family:Georgia,serif;
+    font-style:italic;
+}
+
+.logo-art.three{
+    border:4px solid #ddd;
+    padding:20px;
+    border-radius:50%;
+    font-size:35px;
+}
+
+.product-info{
+    padding:22px;
+}
+
+.product-info h3{
+    margin-bottom:8px;
+}
+
+.product-info p{
+    color:#777;
+    font-size:13px;
+    line-height:1.6;
+    min-height:42px;
+}
+
+.price-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:20px;
+}
+
+.price{
+    font-size:21px;
+    font-weight:bold;
+}
+
+.buy{
+    border:none;
+    background:#fff;
+    color:#000;
+    padding:10px 15px;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* ================= FEATURES ================= */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.feature{
+    background:#131313;
+    border:1px solid #292929;
+    border-radius:14px;
+    padding:28px;
+}
+
+.feature-icon{
+    width:45px;
+    height:45px;
+    border-radius:10px;
+    background:#242424;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:20px;
+}
+
+.feature h3{
+    margin-bottom:10px;
+}
+
+.feature p{
+    color:#777;
+    line-height:1.6;
+    font-size:14px;
+}
+
+/* ================= ADD LISTING ================= */
+
+.form-box{
+    max-width:700px;
+    margin:auto;
+    background:#141414;
+    border:1px solid #292929;
+    border-radius:15px;
+    padding:30px;
+}
+
+.form-group{
+    margin-bottom:20px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+    color:#aaa;
+    font-size:14px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    background:#0b0b0b;
+    border:1px solid #333;
+    color:white;
+    border-radius:8px;
+    padding:13px;
+    outline:none;
+}
+
+.form-group textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus{
+    border-color:#777;
+}
+
+.file-box{
+    border:1px dashed #444;
+    padding:25px;
+    text-align:center;
+    border-radius:10px;
+    color:#777;
+}
+
+/* ================= CART ================= */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    z-index:2000;
+    display:none;
+}
+
+.overlay.active{
+    display:block;
+}
+
+.cart-panel{
+    position:absolute;
+    right:0;
+    top:0;
+    height:100%;
+    width:min(430px,100%);
+    background:#111;
+    border-left:1px solid #333;
+    padding:25px;
+    overflow:auto;
+}
+
+.close{
+    float:right;
+    background:none;
+    border:none;
+    color:#aaa;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.cart-panel h2{
+    margin-bottom:25px;
+}
+
+.cart-item{
+    padding:18px 0;
+    border-bottom:1px solid #292929;
+}
+
+.cart-item-top{
+    display:flex;
+    justify-content:space-between;
+}
+
+.remove{
+    background:none;
+    border:none;
+    color:#777;
+    cursor:pointer;
+}
+
+.cart-total{
+    display:flex;
+    justify-content:space-between;
+    margin-top:25px;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.checkout{
+    width:100%;
+    margin-top:20px;
+    padding:15px;
+    border:none;
+    border-radius:8px;
+    background:white;
+    color:black;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* ================= PAYMENT ================= */
+
+.payment-box{
+    max-width:600px;
+    margin:auto;
+    background:#151515;
+    border:1px solid #303030;
+    border-radius:15px;
+    padding:30px;
+}
+
+.payment-box h2{
+    margin-bottom:10px;
+}
+
+.payment-box .warning{
+    background:#202020;
+    border:1px solid #333;
+    color:#999;
+    padding:15px;
+    border-radius:8px;
+    margin:20px 0;
+    font-size:13px;
+    line-height:1.5;
+}
+
+.card-preview{
+    background:linear-gradient(135deg,#303030,#111);
+    border:1px solid #444;
+    height:190px;
+    border-radius:15px;
+    padding:25px;
+    margin-bottom:25px;
+}
+
+.chip{
+    width:45px;
+    height:32px;
+    background:#aaa;
+    border-radius:6px;
+    margin-bottom:40px;
+}
+
+.card-number{
+    font-size:19px;
+    letter-spacing:3px;
+}
+
+.card-name{
+    margin-top:15px;
+    color:#aaa;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    border-top:1px solid #222;
+    padding:40px 20px;
+    text-align:center;
+    color:#666;
+}
+
+.footer-logo{
+    color:white;
+    font-weight:bold;
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+/* ================= MODAL ================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.8);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:3000;
+    padding:20px;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    background:#151515;
+    border:1px solid #333;
+    border-radius:15px;
+    padding:30px;
+    width:min(500px,100%);
+    text-align:center;
+}
+
+.modal-box h2{
+    margin-bottom:15px;
+}
+
+.modal-box p{
+    color:#888;
+    line-height:1.6;
+}
+
+.modal-box button{
+    margin-top:25px;
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:850px){
+
+    nav{
+        display:none;
+    }
+
+    .products{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:550px){
+
+    .products{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        letter-spacing:-3px;
+    }
+
+    section{
+        padding:65px 15px;
+    }
+
+    .navbar{
+        padding:0 15px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <h1>KeenLogo</h1>
+<!-- ================= HEADER ================= -->
 
-    <p>Professional Logo Design</p>
+<header>
 
-    <button>Contact Me</button>
+<div class="navbar">
+
+<div class="logo">
+Keen<span>Logo</span>
+</div>
+
+<nav>
+<a href="#home">Ana səhifə</a>
+<a href="#store">Logolar</a>
+<a href="#features">Haqqımızda</a>
+<a href="#sell">İlan yerləşdir</a>
+</nav>
+
+<button class="cart-button" onclick="openCart()">
+🛒 Səbət
+<span class="cart-count" id="cartCount">0</span>
+</button>
+
+</div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<div class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="badge">
+KeenLogo Marketplace
+</div>
+
+<h1>
+Your Brand.<br>
+<span>Your Logo.</span>
+</h1>
+
+<p>
+Hazır və xüsusi logo dizaynlarını kəşf et.
+Öz dizaynını yerləşdir, sat və brendlərə yeni görünüş qazandır.
+</p>
+
+<div class="hero-buttons">
+
+<button class="primary"
+onclick="document.getElementById('store').scrollIntoView()">
+Logolara bax
+</button>
+
+<button class="secondary"
+onclick="document.getElementById('sell').scrollIntoView()">
+Logo sat
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ================= STORE ================= -->
+
+<section id="store">
+
+<div class="section-title">
+
+<h2>Logo Marketplace</h2>
+
+<p>
+Hazır logo dizaynlarından birini seç.
+</p>
+
+</div>
+
+<div class="products">
+
+<!-- PRODUCT 1 -->
+
+<div class="product">
+
+<div class="product-image">
+
+<div class="logo-art">
+LION
+</div>
+
+</div>
+
+<div class="product-info">
+
+<h3>Modern Lion</h3>
+
+<p>
+Minimalist və güclü lion logo konsepti.
+</p>
+
+<div class="price-row">
+
+<span class="price">15 AZN</span>
+
+<button class="buy"
+onclick="addToCart('Modern Lion',15)">
+Səbətə əlavə et
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 2 -->
+
+<div class="product">
+
+<div class="product-image">
+
+<div class="logo-art two">
+Royal
+</div>
+
+</div>
+
+<div class="product-info">
+
+<h3>Royal Logo</h3>
+
+<p>
+Premium marka və bizneslər üçün klassik logo.
+</p>
+
+<div class="price-row">
+
+<span class="price">20 AZN</span>
+
+<button class="buy"
+onclick="addToCart('Royal Logo',20)">
+Səbətə əlavə et
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 3 -->
+
+<div class="product">
+
+<div class="product-image">
+
+<div class="logo-art three">
+K
+</div>
+
+</div>
+
+<div class="product-info">
+
+<h3>Circle K</h3>
+
+<p>
+Sadə və modern biznes logo konsepti.
+</p>
+
+<div class="price-row">
+
+<span class="price">10 AZN</span>
+
+<button class="buy"
+onclick="addToCart('Circle K',10)">
+Səbətə əlavə et
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 4 -->
+
+<div class="product">
+
+<div class="product-image">
+
+<div class="logo-art">
+NOVA
+</div>
+
+</div>
+
+<div class="product-info">
+
+<h3>Nova Brand</h3>
+
+<p>
+Texnologiya və startup layihələri üçün.
+</p>
+
+<div class="price-row">
+
+<span class="price">25 AZN</span>
+
+<button class="buy"
+onclick="addToCart('Nova Brand',25)">
+Səbətə əlavə et
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 5 -->
+
+<div class="product">
+
+<div class="product-image">
+
+<div class="logo-art two">
+Velo
+</div>
+
+</div>
+
+<div class="product-info">
+
+<h3>Velo</h3>
+
+<p>
+Sport və velosiped markaları üçün dizayn.
+</p>
+
+<div class="price-row">
+
+<span class="price">18 AZN</span>
+
+<button class="buy"
+onclick="addToCart('Velo',18)">
+Səbətə əlavə et
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PRODUCT 6 -->
+
+<div class="product">
+
+<div class="product-image">
+
+<div class="logo-art three">
+M
+</div>
+
+</div>
+
+<div class="product-info">
+
+<h3>Monogram M</h3>
+
+<p>
+Premium şəxsi marka üçün monogram logo.
+</p>
+
+<div class="price-row">
+
+<span class="price">22 AZN</span>
+
+<button class="buy"
+onclick="addToCart('Monogram M',22)">
+Səbətə əlavə et
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section id="features">
+
+<div class="section-title">
+
+<h2>Niyə KeenLogo?</h2>
+
+<p>
+Logo dizaynlarını bir yerdə kəşf et.
+</p>
+
+</div>
+
+<div class="features">
+
+<div class="feature">
+
+<div class="feature-icon">🎨</div>
+
+<h3>Original Designs</h3>
+
+<p>
+Marketplace-də müxtəlif logo konseptlərini kəşf edə bilərsən.
+</p>
+
+</div>
+
+<div class="feature">
+
+<div class="feature-icon">⚡</div>
+
+<h3>Fast Delivery</h3>
+
+<p>
+Satın alınan rəqəmsal məhsulların çatdırılması üçün sistem hazırlaya bilərik.
+</p>
+
+</div>
+
+<div class="feature">
+
+<div class="feature-icon">🔒</div>
+
+<h3>Secure Payment</h3>
+
+<p>
+Real kart ödənişləri üçün təhlükəsiz ödəniş provayderi istifadə olunmalıdır.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= SELL ================= -->
+
+<section id="sell">
+
+<div class="section-title">
+
+<h2>Logo İlanı Yerləşdir</h2>
+
+<p>
+Öz logo dizaynını marketplace-də nümayiş etdir.
+</p>
+
+</div>
+
+<div class="form-box">
+
+<div class="form-group">
+
+<label>Logo adı</label>
+
+<input
+id="listingName"
+type="text"
+placeholder="Məsələn: Luxury Lion Logo">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Açıqlama</label>
+
+<textarea
+id="listingDescription"
+placeholder="Logo haqqında məlumat..."></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Qiymət (AZN)</label>
+
+<input
+id="listingPrice"
+type="number"
+placeholder="15">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Logo faylı</label>
+
+<div class="file-box">
+
+<input
+id="listingFile"
+type="file"
+accept="image/*">
+
+<p style="margin-top:10px;">
+PNG, JPG və WEBP
+</p>
+
+</div>
+
+</div>
+
+
+<button
+class="primary"
+style="width:100%;"
+onclick="publishListing()">
+
+İlanı yerləşdir
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= PAYMENT INFO ================= -->
+
+<section>
+
+<div class="payment-box">
+
+<h2>💳 Təhlükəsiz ödəniş</h2>
+
+<p style="color:#777;margin-top:8px;">
+Logo satın aldıqda təhlükəsiz ödəniş səhifəsinə keçəcəksən.
+</p>
+
+<div class="warning">
+
+<strong>Vacib:</strong><br>
+
+Bu demo saytda kart məlumatları serverə göndərilmir
+və saxlanılmır. Real ödəniş almaq üçün ayrıca
+təhlükəsiz payment provider inteqrasiyası lazımdır.
+
+</div>
+
+<div class="card-preview">
+
+<div class="chip"></div>
+
+<div class="card-number">
+•••• •••• •••• ••••
+</div>
+
+<div class="card-name">
+KEENLOGO CUSTOMER
+</div>
+
+</div>
+
+<button
+class="primary"
+style="width:100%;"
+onclick="showPaymentMessage()">
+
+Ödənişə keç
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= CART OVERLAY ================= -->
+
+<div class="overlay" id="cartOverlay">
+
+<div class="cart-panel">
+
+<button class="close" onclick="closeCart()">×</button>
+
+<h2>Səbət</h2>
+
+<div id="cartItems"></div>
+
+<div class="cart-total">
+
+<span>Cəmi</span>
+
+<span id="cartTotal">
+0 AZN
+</span>
+
+</div>
+
+<button
+class="checkout"
+onclick="checkout()">
+
+Ödənişə keç
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= MODAL ================= -->
+
+<div class="modal" id="messageModal">
+
+<div class="modal-box">
+
+<h2 id="modalTitle">
+Hazırdır!
+</h2>
+
+<p id="modalText">
+Əməliyyat tamamlandı.
+</p>
+
+<button onclick="closeModal()">
+Bağla
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="footer-logo">
+KeenLogo
+</div>
+
+<p>
+Logo Marketplace
+</p>
+
+<p style="margin-top:15px;">
+© 2026 KeenLogo. All rights reserved.
+</p>
+
+</footer>
+
+
+<script>
+
+/* ================= CART SYSTEM ================= */
+
+let cart = [];
+
+function addToCart(name, price){
+
+    cart.push({
+        name:name,
+        price:price
+    });
+
+    updateCart();
+
+    showMessage(
+        "Səbətə əlavə edildi",
+        name + " səbətə əlavə olundu."
+    );
+}
+
+
+function removeFromCart(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+}
+
+
+function updateCart(){
+
+    const count =
+        document.getElementById("cartCount");
+
+    const items =
+        document.getElementById("cartItems");
+
+    const totalElement =
+        document.getElementById("cartTotal");
+
+    count.innerText = cart.length;
+
+    items.innerHTML = "";
+
+    let total = 0;
+
+    if(cart.length === 0){
+
+        items.innerHTML =
+            "<p style='color:#777;'>Səbət boşdur.</p>";
+
+    }
+
+    cart.forEach((item,index)=>{
+
+        total += item.price;
+
+        const div =
+            document.createElement("div");
+
+        div.className = "cart-item";
+
+        div.innerHTML = `
+
+            <div class="cart-item-top">
+
+                <strong>${item.name}</strong>
+
+                <button
+                    class="remove"
+                    onclick="removeFromCart(${index})">
+
+                    Sil
+
+                </button>
+
+            </div>
+
+            <p style="color:#777;margin-top:8px;">
+
+                ${item.price} AZN
+
+            </p>
+
+        `;
+
+        items.appendChild(div);
+
+    });
+
+    totalElement.innerText =
+        total + " AZN";
+}
+
+
+function openCart(){
+
+    document
+        .getElementById("cartOverlay")
+        .classList.add("active");
+
+}
+
+
+function closeCart(){
+
+    document
+        .getElementById("cartOverlay")
+        .classList.remove("active");
+
+}
+
+
+/* ================= CHECKOUT ================= */
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        showMessage(
+            "Səbət boşdur",
+            "Əvvəlcə bir logo seç."
+        );
+
+        return;
+    }
+
+    closeCart();
+
+    document
+        .querySelector(".payment-box")
+        .scrollIntoView({
+            behavior:"smooth"
+        });
+
+}
+
+
+/* ================= LISTING ================= */
+
+function publishListing(){
+
+    const name =
+        document.getElementById("listingName").value;
+
+    const description =
+        document.getElementById("listingDescription").value;
+
+    const price =
+        document.getElementById("listingPrice").value;
+
+    const file =
+        document.getElementById("listingFile").files[0];
+
+
+    if(!name || !description || !price){
+
+        showMessage(
+            "Məlumat çatışmır",
+            "Logo adı, açıqlama və qiyməti doldur."
+        );
+
+        return;
+    }
+
+
+    if(!file){
+
+        showMessage(
+            "Logo faylı yoxdur",
+            "Satmaq istədiyin logo faylını seç."
+        );
+
+        return;
+    }
+
+
+    showMessage(
+        "İlan hazırlandı",
+        "Demo rejimində elan forması qəbul edildi. Real marketplace üçün server verilənlər bazası lazımdır."
+    );
+
+}
+
+
+/* ================= PAYMENT ================= */
+
+function showPaymentMessage(){
+
+    showMessage(
+        "Ödəniş sistemi",
+        "Bu demo versiyada real kartdan pul tutulmur. Real ödəniş üçün təhlükəsiz payment provider inteqrasiyası lazımdır."
+    );
+
+}
+
+
+/* ================= MODAL ================= */
+
+function showMessage(title,text){
+
+    document.getElementById("modalTitle")
+        .innerText = title;
+
+    document.getElementById("modalText")
+        .innerText = text;
+
+    document.getElementById("messageModal")
+        .classList.add("active");
+
+}
+
+
+function closeModal(){
+
+    document.getElementById("messageModal")
+        .classList.remove("active");
+
+}
+
+
+/* ================= START ================= */
+
+updateCart();
+
+</script>
 
 </body>
-</html>
+                                           </html>
