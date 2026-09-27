@@ -14,6 +14,7 @@
     --accent-orange-hover: #ea580c;
     --text-main: #f3f4f6;
     --text-muted: #9ca3af;
+    --keen-blue: #3b82f6; /* Keen için mavi renk */
 }
 
 *{
@@ -28,12 +29,63 @@ html{
 
 body{
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background: var(--bg-dark);
+    background-color: var(--bg-dark);
     color: var(--text-main);
     line-height: 1.5;
+    position: relative;
 }
 
-/* ================= HEADER ================= */
+/* ================= ARKA PLAN VE ANİMASYON ================= */
+
+.bg-pattern {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    /* 1000274954.jpg dosyasını arka plan yapıyoruz */
+    background-image: url('1000274954.jpg'); 
+    background-size: 300px;
+    opacity: 0.15; /* Soluk olması için */
+    filter: blur(5px); /* Sinir bozmaması için blur efekti */
+    z-index: -1;
+    /* Aşağıya doğru süzülme animasyonu */
+    animation: scrollBackgroundDown 12s linear infinite;
+}
+
+@keyframes scrollBackgroundDown {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 300px; }
+}
+
+/* ================= REKLAM ŞERİDİ (PROMO BANNER) ================= */
+
+.promo-banner {
+    background: linear-gradient(90deg, #1e3a8a, #0f172a, var(--accent-orange));
+    color: white;
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1001;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.promo-text {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 20s linear infinite;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* ================= HEADER & NAVBAR ================= */
 
 header{
     position:sticky;
@@ -54,21 +106,46 @@ header{
     padding:0 20px;
 }
 
-/* YENİ LOGO (SİMGE) */
-.logo-icon{
-    width: 45px;
-    height: 45px;
+.nav-left {
     display: flex;
     align-items: center;
-    cursor: pointer;
+    gap: 15px;
 }
 
-nav{
+.menu-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.menu-btn:hover {
+    color: var(--accent-orange);
+}
+
+.logo{
+    font-size:26px;
+    font-weight:900;
+    letter-spacing:-1px;
+    color:white;
+    display: flex;
+    align-items: center;
+}
+
+.logo span{
+    color: var(--keen-blue);
+}
+
+.desktop-nav{
     display:flex;
     gap:25px;
 }
 
-nav a{
+.desktop-nav a{
     color: var(--text-muted);
     text-decoration:none;
     font-size:15px;
@@ -76,7 +153,7 @@ nav a{
     transition:.2s;
 }
 
-nav a:hover{
+.desktop-nav a:hover{
     color:white;
 }
 
@@ -104,6 +181,80 @@ nav a:hover{
     margin-left:6px;
 }
 
+/* ================= YAN MENÜ (SIDEBAR) ================= */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 280px;
+    height: 100vh;
+    background: rgba(14, 16, 23, 0.98);
+    backdrop-filter: blur(15px);
+    border-right: 1px solid var(--border-color);
+    z-index: 3000;
+    transition: left 0.3s ease;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.sidebar-header h2 {
+    font-size: 20px;
+    color: white;
+}
+
+.close-sidebar {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.close-sidebar:hover {
+    color: var(--accent-orange);
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebar-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 16px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    background: #1a1d27;
+    border: 1px solid transparent;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sidebar-links a:hover {
+    background: #232736;
+    border-color: var(--border-color);
+    color: var(--accent-orange);
+}
+
 /* ================= HERO ================= */
 
 .hero{
@@ -113,7 +264,7 @@ nav a:hover{
     justify-content:center;
     text-align:center;
     padding:80px 20px;
-    background: radial-gradient(circle at center, #1a1410 0%, #090a0f 70%);
+    background: radial-gradient(circle at center, rgba(26, 20, 16, 0.6) 0%, transparent 70%);
 }
 
 .hero-content{
@@ -173,20 +324,6 @@ nav a:hover{
     background: var(--accent-orange-hover);
 }
 
-.secondary{
-    background: #161922;
-    color: #fff;
-    border:1px solid var(--border-color);
-    padding:14px 28px;
-    border-radius:10px;
-    cursor:pointer;
-    transition: 0.2s;
-}
-
-.secondary:hover {
-    border-color: var(--accent-orange);
-}
-
 /* ================= GENERAL ================= */
 
 section{
@@ -243,7 +380,6 @@ section{
     padding: 20px;
 }
 
-/* KISMI BLUR (FİLİGRAN) EFEKTİ */
 .blur-overlay {
     position: absolute;
     bottom: 20px;
@@ -317,7 +453,7 @@ section{
     border-color: var(--accent-orange);
 }
 
-/* ================= FORM BOX ================= */
+/* ================= FORMS ================= */
 
 .form-box{
     max-width:700px;
@@ -366,7 +502,7 @@ section{
     position:fixed;
     inset:0;
     background:rgba(0,0,0,.8);
-    z-index:2000;
+    z-index:4000;
     display:none;
     backdrop-filter: blur(4px);
 }
@@ -394,10 +530,6 @@ section{
     color: var(--text-muted);
     font-size:25px;
     cursor:pointer;
-}
-
-.cart-panel h2{
-    margin-bottom:25px;
 }
 
 .cart-item{
@@ -450,97 +582,41 @@ footer{
     padding:40px 20px;
     text-align:center;
     color: var(--text-muted);
-}
-
-/* ================= MODAL ================= */
-
-.modal{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.8);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:3000;
-    padding:20px;
-}
-
-.modal.active{
-    display:flex;
-}
-
-.modal-box{
     background: var(--card-bg);
-    border:1px solid var(--border-color);
-    border-radius:16px;
-    padding:30px;
-    width:min(480px,100%);
-    text-align:center;
 }
-
-.modal-box h2{
-    margin-bottom:12px;
-}
-
-.modal-box p{
-    color: var(--text-muted);
-}
-
-.modal-box button{
-    margin-top:22px;
-    padding:11px 25px;
-    border:none;
-    background: var(--accent-orange);
-    color: white;
-    font-weight: bold;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-/* ================= RESPONSIVE ================= */
 
 @media(max-width:850px){
-    nav{ display:none; }
-}
-
-@media(max-width:550px){
-    .hero h1{ letter-spacing:-1px; }
-    section{ padding:50px 15px; }
+    .desktop-nav{ display:none; }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
+<!-- ARKA PLAN GÖRSELİ VE ANİMASYONU -->
+<div class="bg-pattern"></div>
 
+<!-- ================= REKLAM ŞERİDİ ================= -->
+<div class="promo-banner">
+    <div class="promo-text">
+        🚀 Özel Kampanya: Tasarım siparişlerinizde bu haftaya özel indirimler! &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 🔥 Kendi firmanız için en iyi logoyu hemen seçin!
+    </div>
+</div>
+
+<!-- ================= HEADER ================= -->
 <header>
 <div class="navbar">
 
-<!-- YENİ SİMGE LOGO -->
-<div class="logo-icon" onclick="window.scrollTo(0,0)">
-    <svg viewBox="0 0 100 100" width="100%" height="100%">
-        <!-- 1000274924.png baz alınarak çizilmiş keskin hatlı metalik K simgesi -->
-        <path d="M15,20 L35,15 L35,45 L70,15 L90,25 L50,55 L95,85 L75,90 L35,60 L35,85 L15,80 Z" 
-              fill="url(#metalGrad)" 
-              stroke="#555" stroke-width="1" stroke-linejoin="bevel"/>
-        <!-- İç Gölgeler/Vurgular için ek path -->
-        <path d="M35,45 L70,15 L78,20 L40,52 Z" fill="rgba(255,255,255,0.4)"/>
-        <path d="M50,55 L95,85 L85,88 L43,60 Z" fill="rgba(0,0,0,0.3)"/>
-        
-        <defs>
-            <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#ffffff" />
-                <stop offset="30%" stop-color="#a0a5b0" />
-                <stop offset="70%" stop-color="#d0d5e0" />
-                <stop offset="100%" stop-color="#707580" />
-            </linearGradient>
-        </defs>
-    </svg>
+<div class="nav-left">
+    <!-- SOL ÜST YAN MENÜ AÇMA BUTONU -->
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+    <div class="logo" onclick="window.scrollTo(0,0)" style="cursor:pointer;">
+        <span>Keen</span>Logo
+    </div>
 </div>
 
-<!-- GÜNCELLENMİŞ MENÜ -->
-<nav>
+<nav class="desktop-nav">
 <a href="#hazir-logolar">Hazır Logolar</a>
 <a href="#kendi-firmani-sec">Kendi firmanı seç</a>
 <a href="#tasarimin-hakkinda-konus">Tasarımın hakkında konuş</a>
@@ -551,6 +627,22 @@ footer{
 </button>
 </div>
 </header>
+
+
+<!-- ================= YAN MENÜ (SIDEBAR) ================= -->
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+        <h2>Menü</h2>
+        <button class="close-sidebar" onclick="toggleSidebar()">×</button>
+    </div>
+    
+    <div class="sidebar-links">
+        <!-- TÜM HİZMETLER BURADA TEK TEK EKLİ -->
+        <a href="#hazir-logolar" onclick="toggleSidebar()">📦 Hazır Logolar (Vitrin)</a>
+        <a href="#kendi-firmani-sec" onclick="toggleSidebar()">💡 Kendi Firmanı Seç (Özel İsim)</a>
+        <a href="#tasarimin-hakkinda-konus" onclick="toggleSidebar()">🎨 Tasarımın Hakkında Konuş (Görüşme)</a>
+    </div>
+</div>
 
 
 <!-- ================= HERO ================= -->
@@ -575,18 +667,15 @@ footer{
 <!-- ================= HAZIR LOGOLAR (Vitrin) ================= -->
 
 <section id="hazir-logolar">
-
 <div class="section-title">
 <h2>Hazır Logolar</h2>
 <p>Satışta olan özel tasarım konseptlerimiz.</p>
 </div>
 
 <div class="products">
-
 <div class="product">
 <div class="product-image">
     
-    <!-- Kısmi Blur (Filigran) Katmanı -->
     <div class="blur-overlay">
         <span>KEENLOGO KORUMASI</span>
     </div>
@@ -606,23 +695,19 @@ footer{
 <div class="product-info">
 <h3>Mountain & Adventure Logo</h3>
 <p>Dairəvi çərçivədə narıncı dağ və meşə konseptli modern minimalist logo.</p>
-
 <div class="price-row">
 <span class="price">5 AZN</span>
 <button class="buy" onclick="addToCart('Mountain & Adventure Logo', 5)">Səbətə at</button>
 </div>
 </div>
 </div>
-
 </div>
-
 </section>
 
 
 <!-- ================= KENDİ FİRMANI SEÇ (Özel İsim) ================= -->
 
 <section id="kendi-firmani-sec">
-
 <div class="section-title">
 <h2>Kendi firmanı seç</h2>
 <p>İşletmeniz için benzersiz bir ad ve logoya mı ihtiyacınız var?</p>
@@ -630,7 +715,7 @@ footer{
 
 <div class="form-box">
 <p style="color:var(--text-muted); margin-bottom:20px; font-size:14px; text-align:center;">
-Firmanızın faaliyet alanını ve tarzını bize iletin, size özel marka ismi önerileri ve logo fikirleri sunalım. (Talebiniz <strong>keendesignlogo@gmail.com</strong> adresine iletilecektir.)
+Firmanızın faaliyet alanını ve tarzını bize iletin, size özel marka ismi önerileri ve logo fikirleri sunalım.
 </p>
 
 <div class="form-group">
@@ -647,14 +732,12 @@ Firmanızın faaliyet alanını ve tarzını bize iletin, size özel marka ismi 
 📩 Fikir Talep Et
 </button>
 </div>
-
 </section>
 
 
 <!-- ================= TASARIMIN HAKKINDA KONUŞ (Özel İletişim) ================= -->
 
 <section id="tasarimin-hakkinda-konus">
-
 <div class="section-title">
 <h2>Tasarımın hakkında konuş</h2>
 <p>Özel logo siparişleri veya projeleriniz için detayları görüşelim.</p>
@@ -680,7 +763,6 @@ Firmanızın faaliyet alanını ve tarzını bize iletin, size özel marka ismi 
 📧 İletişime Geç
 </button>
 </div>
-
 </section>
 
 
@@ -690,26 +772,12 @@ Firmanızın faaliyet alanını ve tarzını bize iletin, size özel marka ismi 
 <div class="cart-panel">
 <button class="close" onclick="closeCart()">×</button>
 <h2>Səbətim</h2>
-
 <div id="cartItems"></div>
-
 <div class="cart-total">
 <span>Cəmi:</span>
 <span id="cartTotal">0 AZN</span>
 </div>
-
 <button class="checkout" onclick="checkout()">Siparişi Tamamla (Gmail)</button>
-</div>
-</div>
-
-
-<!-- ================= MODAL ================= -->
-
-<div class="modal" id="messageModal">
-<div class="modal-box">
-<h2 id="modalTitle">Bildirim</h2>
-<p id="modalText">Bilgi</p>
-<button onclick="closeModal()">Kapat</button>
 </div>
 </div>
 
@@ -718,26 +786,25 @@ Firmanızın faaliyet alanını ve tarzını bize iletin, size özel marka ismi 
 
 <footer>
 <div style="display:flex; justify-content:center; align-items:center; gap:8px; margin-bottom:10px;">
-    <!-- Footer Küçük Logo -->
-    <svg viewBox="0 0 100 100" width="25" height="25">
-        <path d="M15,20 L35,15 L35,45 L70,15 L90,25 L50,55 L95,85 L75,90 L35,60 L35,85 L15,80 Z" fill="#777" stroke="#333" stroke-width="1"/>
-    </svg>
-    <span style="color:white; font-weight:bold; font-size:18px;">KeenLogo</span>
+    <span style="color:white; font-weight:bold; font-size:22px;"><span style="color: var(--keen-blue);">Keen</span>Logo</span>
 </div>
 <p>Digital Branding & Design</p>
 <p style="margin-top:10px; font-size: 12px;">© 2026 KeenLogo. Tüm hakları saklıdır.</p>
 </footer>
 
-
 <script>
-/* ================= CART SYSTEM ================= */
+/* ================= YAN MENÜ (SIDEBAR) JS ================= */
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("active");
+}
 
+/* ================= CART SYSTEM ================= */
 let cart = JSON.parse(localStorage.getItem("keen_cart")) || [];
 
 function addToCart(name, price){
     cart.push({ name, price });
     saveCart();
-    showMessage("Səbətə Əlavə Edildi", `"${name}" səbətinizə əlavə olundu.`);
+    alert(`"${name}" səbətinizə əlavə olundu.`);
 }
 
 function removeFromCart(index){
@@ -790,7 +857,7 @@ function closeCart(){
 
 function checkout(){
     if(cart.length === 0){
-        showMessage("Səbət boşdur", "Lütfen önce vitrinden bir logo seçin.");
+        alert("Lütfen önce vitrinden bir logo seçin.");
         return;
     }
     
@@ -804,19 +871,16 @@ function checkout(){
 }
 
 /* ================= GMAIL REDIRECT FUNCTIONS ================= */
-
 function sendCustomNameRequest() {
     const sector = document.getElementById("customSector").value.trim();
     const notes = document.getElementById("customNotes").value.trim();
 
     if(!sector && !notes) {
-        showMessage("Eksik Bilgi", "Lütfen sektörünüzü veya beklentilerinizi belirtin.");
+        alert("Lütfen sektörünüzü veya beklentilerinizi belirtin.");
         return;
     }
-
     const subject = encodeURIComponent("Yeni Firma İsmi ve Konsept Talebi");
     const body = encodeURIComponent(`Merhaba KeenLogo,\n\nİşletmem için özel bir isim ve logo fikri talep ediyorum:\n\n• Faaliyet Alanı (Sektör): ${sector}\n• Beklentiler / Detaylar: ${notes}`);
-
     window.location.href = `mailto:keendesignlogo@gmail.com?subject=${subject}&body=${body}`;
 }
 
@@ -825,32 +889,16 @@ function sendDirectMessage() {
     const msgBody = document.getElementById("msgBody").value.trim();
 
     if(!msgBody) {
-        showMessage("Mesaj Alanı Boş", "Lütfen tasarım detaylarını içeren bir mesaj yazın.");
+        alert("Lütfen tasarım detaylarını içeren bir mesaj yazın.");
         return;
     }
-
     const subject = encodeURIComponent(msgSubject);
     const body = encodeURIComponent(msgBody);
-
     window.location.href = `mailto:keendesignlogo@gmail.com?subject=${subject}&body=${body}`;
 }
 
-/* ================= MODAL ================= */
-
-function showMessage(title, text){
-    document.getElementById("modalTitle").innerText = title;
-    document.getElementById("modalText").innerText = text;
-    document.getElementById("messageModal").classList.add("active");
-}
-
-function closeModal(){
-    document.getElementById("messageModal").classList.remove("active");
-}
-
 /* ================= INIT ================= */
-
 updateCartUI();
-
 </script>
 </body>
 </html>
