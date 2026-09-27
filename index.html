@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KeenLogo | Premium Logo & Dijital Markalaşma Stüdyosu</title>
+<title>KeenLogo | Premium Siyah-Gri Logo & Dijital Markalaşma Stüdyosu</title>
 
 <style>
-/* ================= CSS DEĞİŞKENLERİ & RENK PSİKOLOJİSİ ================= */
+/* ================= CSS DEĞİŞKENLERİ & SİYAH-GRİ PSİKOLOJİSİ ================= */
 :root {
-    --bg-primary: #07090e;      /* Derin profesyonel siyah tonu */
-    --bg-secondary: #0d111a;    /* Kart ve bölme arka planı */
-    --card-bg: #121824;         /* Ürün kartı yüzeyi */
-    --border-color: #1e2638;    /* Zarif ve modern sınır çizgileri */
-    --accent-blue: #2563eb;     /* Güven ve kararlılık hissi veren ana mavi */
-    --accent-blue-hover: #1d4ed8;
-    --accent-glow: rgba(37, 99, 235, 0.15);
-    --text-main: #f8fafc;       /* Yüksek okunabilirlik için ana metin */
-    --text-muted: #94a3b8;      /* İkincil metinler için yumuşak gri */
-    --success-green: #10b981;   /* Güvenli işlem göstergesi */
+    --bg-primary: #050505;      /* Safa yakın derin obsidyen siyahı */
+    --bg-secondary: #0a0a0a;    /* İkincil koyu alanlar ve footer */
+    --card-bg: #121212;         /* Ürün ve form kartları için lüks kömür grisi */
+    --card-hover: #181818;      /* Kart üzerine gelindiğinde hafif ton değişimi */
+    --border-color: #222222;    /* Zarif, minimalist gri sınır çizgileri */
+    --accent-main: #f8fafc;     /* Saf beyaz / gümüş ana metin ve vurgu */
+    --accent-muted: #737373;    /* Profesyonel orta gri detaylar */
+    --accent-hover: #262626;    /* Buton hover gri tonu */
+    --text-main: #ffffff;       /* Maksimum okunabilirlik için ana başlıklar */
+    --text-muted: #a3a3a3;      /* İkincil metinler için yumuşak gri */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -40,7 +40,7 @@ body{
     overflow-x: hidden;
 }
 
-/* Özel Scrollbar Tasarımı */
+/* Özel Siyah-Gri Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -52,19 +52,19 @@ body{
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-blue);
+    background: var(--accent-muted);
 }
 
 /* ================= REKLAM & DUYURU ŞERİDİ ================= */
 .promo-banner {
-    background: linear-gradient(90deg, #1e3a8a, #0f172a, #2563eb);
-    color: white;
+    background: linear-gradient(90deg, #111111, #1a1a1a, #0d0d0d);
+    color: var(--text-muted);
     padding: 10px 0;
     overflow: hidden;
     white-space: nowrap;
     position: relative;
     z-index: 1001;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .promo-text {
@@ -72,8 +72,9 @@ body{
     padding-left: 100%;
     animation: marquee 24s linear infinite;
     font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1.2px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: #d4d4d4;
 }
 
 @keyframes marquee {
@@ -86,7 +87,7 @@ header{
     position:sticky;
     top:0;
     z-index:1000;
-    background: rgba(7, 9, 14, 0.88);
+    background: rgba(5, 5, 5, 0.9);
     border-bottom: 1px solid var(--border-color);
     backdrop-filter: blur(16px);
 }
@@ -110,7 +111,7 @@ header{
 .menu-btn {
     background: transparent;
     border: none;
-    color: white;
+    color: var(--text-main);
     font-size: 26px;
     cursor: pointer;
     transition: var(--transition-smooth);
@@ -119,7 +120,7 @@ header{
 }
 
 .menu-btn:hover {
-    color: var(--accent-blue);
+    color: var(--accent-muted);
 }
 
 .logo{
@@ -133,7 +134,9 @@ header{
 }
 
 .logo span{
-    color: var(--accent-blue);
+    color: var(--accent-muted);
+    font-weight: 400;
+    margin-left: 2px;
 }
 
 .nav-links-desktop {
@@ -161,7 +164,7 @@ header{
 }
 
 .cart-button{
-    background: var(--bg-secondary);
+    background: var(--card-bg);
     border: 1px solid var(--border-color);
     color:white;
     padding:10px 18px;
@@ -175,16 +178,17 @@ header{
 }
 
 .cart-button:hover {
-    border-color: var(--accent-blue);
-    background: var(--card-bg);
+    border-color: var(--accent-muted);
+    background: var(--card-hover);
 }
 
 .cart-count{
-    background: var(--accent-blue);
+    background: #262626;
     color: #fff;
     padding:2px 7px;
     border-radius:20px;
     font-size:11px;
+    border: 1px solid var(--border-color);
 }
 
 /* ================= YAN MENÜ (SIDEBAR) ================= */
@@ -194,7 +198,7 @@ header{
     left: -320px;
     width: 290px;
     height: 100vh;
-    background: rgba(13, 17, 26, 0.98);
+    background: rgba(10, 10, 10, 0.98);
     backdrop-filter: blur(20px);
     border-right: 1px solid var(--border-color);
     z-index: 3000;
@@ -231,7 +235,7 @@ header{
 }
 
 .close-sidebar:hover {
-    color: var(--accent-blue);
+    color: white;
 }
 
 .sidebar-links {
@@ -255,12 +259,11 @@ header{
 }
 
 .sidebar-links a:hover {
-    background: #1a2335;
-    border-color: var(--accent-blue);
-    color: var(--accent-blue);
+    background: var(--card-hover);
+    border-color: var(--accent-muted);
 }
 
-/* ================= HERO BÖLÜMÜ (ÖZEL DESENLİ ARKA PLAN) ================= */
+/* ================= HERO BÖLÜMÜ ================= */
 .hero{
     position: relative;
     min-height:600px;
@@ -280,8 +283,8 @@ header{
     height: 100%;
     background-image: url('1000274954_3.jpg');
     background-size: 280px;
-    opacity: 0.16;
-    filter: blur(4px);
+    opacity: 0.10;
+    filter: grayscale(100%) blur(4px);
     z-index: 1;
     animation: scrollHeroDown 20s linear infinite;
 }
@@ -300,12 +303,12 @@ header{
 .badge{
     display:inline-block;
     padding:6px 18px;
-    border:1px solid rgba(37, 99, 235, 0.3);
-    background: rgba(37, 99, 235, 0.1);
+    border:1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.03);
     border-radius:30px;
-    color: #93c5fd;
+    color: var(--text-muted);
     font-size:13px;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom:25px;
     backdrop-filter: blur(5px);
 }
@@ -319,7 +322,8 @@ header{
 }
 
 .hero h1 span{
-    color: var(--text-muted);
+    color: var(--accent-muted);
+    font-weight: 400;
 }
 
 .hero p{
@@ -338,12 +342,12 @@ header{
 }
 
 .primary-btn{
-    background: var(--accent-blue);
-    color: #fff;
+    background: #ffffff;
+    color: #050505;
     border:none;
     padding:14px 28px;
     border-radius:10px;
-    font-weight:600;
+    font-weight:700;
     cursor:pointer;
     transition: var(--transition-smooth);
     text-decoration: none;
@@ -351,8 +355,8 @@ header{
 }
 
 .primary-btn:hover {
-    background: var(--accent-blue-hover);
-    box-shadow: 0 0 20px var(--accent-glow);
+    background: #e2e8f0;
+    box-shadow: 0 0 20px rgba(255,255,255,0.1);
 }
 
 .secondary-btn{
@@ -369,8 +373,8 @@ header{
 }
 
 .secondary-btn:hover {
-    border-color: var(--text-muted);
-    background: #1a2335;
+    border-color: var(--accent-muted);
+    background: var(--card-hover);
 }
 
 /* ================= GENEL BÖLÜMLER ================= */
@@ -388,6 +392,7 @@ section{
     font-size:32px;
     margin-bottom:8px;
     font-weight: 700;
+    color: white;
 }
 
 .section-title p{
@@ -415,17 +420,17 @@ section{
 }
 
 .feature-card:hover {
-    border-color: var(--accent-blue);
+    border-color: var(--accent-muted);
     transform: translateY(-3px);
 }
 
 .feature-icon {
-    background: rgba(37, 99, 235, 0.1);
-    color: var(--accent-blue);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
     padding: 12px;
     border-radius: 10px;
     font-size: 18px;
-    font-weight: bold;
+    border: 1px solid var(--border-color);
 }
 
 .feature-text h4 {
@@ -459,8 +464,8 @@ section{
 
 .product:hover{
     transform:translateY(-6px);
-    border-color: var(--accent-blue);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-color: var(--accent-muted);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.8);
 }
 
 .product-image{
@@ -477,7 +482,7 @@ section{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: hue-rotate(150deg) saturate(1.5);
+    filter: grayscale(40%) contrast(1.1);
     transition: transform 0.5s ease;
 }
 
@@ -485,7 +490,6 @@ section{
     transform: scale(1.04);
 }
 
-/* Koruması yazısı tam ortalandı */
 .blur-overlay {
     position: absolute;
     top: 50%;
@@ -493,9 +497,9 @@ section{
     transform: translate(-50%, -50%);
     width: 82%;
     height: 56px;
-    background: rgba(10, 14, 22, 0.6);
+    background: rgba(10, 10, 10, 0.75);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -505,7 +509,7 @@ section{
 }
 
 .blur-overlay span {
-    color: rgba(255, 255, 255, 0.95);
+    color: rgba(255, 255, 255, 0.9);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2.5px;
@@ -523,6 +527,7 @@ section{
     margin-bottom:8px;
     font-size: 19px;
     font-weight: 600;
+    color: white;
 }
 
 .product-info p{
@@ -544,14 +549,13 @@ section{
 .price{
     font-size:22px;
     font-weight:700;
-    color: var(--accent-blue);
+    color: #ffffff;
 }
 
 .buy-btn{
-    border:none;
-    background: #1a2335;
+    border:1px solid var(--border-color);
+    background: #1a1a1a;
     color: #fff;
-    border: 1px solid var(--border-color);
     padding:10px 18px;
     border-radius:8px;
     font-weight:600;
@@ -560,8 +564,9 @@ section{
 }
 
 .buy-btn:hover {
-    background: var(--accent-blue);
-    border-color: var(--accent-blue);
+    background: #ffffff;
+    color: #050505;
+    border-color: #ffffff;
 }
 
 /* ================= FORMS & TALEPLER ================= */
@@ -576,7 +581,7 @@ section{
     border:1px solid var(--border-color);
     border-radius:18px;
     padding:35px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
 }
 
 .form-box h3 {
@@ -623,8 +628,8 @@ section{
 
 .form-group input:focus,
 .form-group textarea:focus{
-    border-color: var(--accent-blue);
-    box-shadow: 0 0 0 3px var(--accent-glow);
+    border-color: var(--accent-muted);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
 }
 
 /* ================= SIK SORULAN SORULAR (FAQ ACCORDION) ================= */
@@ -655,6 +660,7 @@ section{
 
 .faq-question span {
     transition: transform 0.3s ease;
+    color: var(--text-muted);
 }
 
 .faq-answer {
@@ -667,7 +673,7 @@ section{
 }
 
 .faq-item.active {
-    border-color: var(--accent-blue);
+    border-color: var(--accent-muted);
 }
 
 .faq-item.active .faq-answer {
@@ -677,7 +683,7 @@ section{
 
 .faq-item.active .faq-question span {
     transform: rotate(45deg);
-    color: var(--accent-blue);
+    color: white;
 }
 
 /* ================= TOAST BİLDİRİM SİSTEMİ ================= */
@@ -693,11 +699,11 @@ section{
 
 .toast {
     background: var(--card-bg);
-    border: 1px solid var(--accent-blue);
+    border: 1px solid var(--border-color);
     color: white;
     padding: 14px 22px;
     border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.8);
     font-size: 14px;
     font-weight: 500;
     display: flex;
@@ -719,7 +725,7 @@ section{
 .overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.75);
+    background:rgba(0,0,0,.8);
     z-index:4000;
     display:none;
     backdrop-filter: blur(5px);
@@ -735,7 +741,7 @@ section{
     top:0;
     height:100%;
     width:min(440px, 100%);
-    background: #0d121c;
+    background: var(--bg-secondary);
     border-left:1px solid var(--border-color);
     padding:30px;
     overflow-y:auto;
@@ -754,6 +760,7 @@ section{
 
 .cart-panel-header h3 {
     font-size: 18px;
+    color: white;
 }
 
 .close-cart{
@@ -787,13 +794,14 @@ section{
 .remove-btn{
     background:none;
     border:none;
-    color: #f87171;
+    color: #a3a3a3;
     cursor:pointer;
     font-size: 13px;
     font-weight: 500;
 }
 
 .remove-btn:hover {
+    color: #ffffff;
     text-decoration: underline;
 }
 
@@ -809,6 +817,7 @@ section{
     font-size:20px;
     font-weight:bold;
     margin-bottom:20px;
+    color: white;
 }
 
 .checkout-btn{
@@ -816,8 +825,8 @@ section{
     padding:14px;
     border:none;
     border-radius:10px;
-    background: var(--accent-blue);
-    color:white;
+    background: #ffffff;
+    color:#050505;
     font-weight:bold;
     cursor:pointer;
     transition: var(--transition-smooth);
@@ -825,7 +834,7 @@ section{
 }
 
 .checkout-btn:hover {
-    background: var(--accent-blue-hover);
+    background: #cbd5e1;
 }
 
 /* ================= FOOTER ================= */
@@ -854,7 +863,7 @@ footer p {
 
 <!-- REKLAM & DUYURU ŞERİDİ -->
 <div class="promo-banner">
-    <div class="promo-text">🚀 KeenLogo Tasarım Stüdyolarına Hoş Geldiniz! • Özel ve Hazır Logo Konseptleri • Güvenli İşlem & Hızlı Vektörel Teslimat • Visa Kart Entegrasyonu Aktif!</div>
+    <div class="promo-text">◼ KÖMÜR GRİSİ & OBSİDİYEN SİYAH ESTETİK • KeenLogo Tasarım Stüdyoları Aktif • Özel ve Hazır Logo Konseptleri • Visa Kart Entegrasyonu Uyumlu!</div>
 </div>
 
 <!-- HEADER / NAVBAR -->
@@ -897,7 +906,7 @@ footer p {
 <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-content">
-        <span class="badge">KeenLogo Tasarım Stüdyosu</span>
+        <span class="badge">KeenLogo Siyah-Gri Stüdyo Koleksiyonu</span>
         <h1>Sizin Markanız.<br><span>Sizin Kimliğiniz.</span></h1>
         <p>İster hazır logolarımızdan birini seçin[span_0](start_span)[span_0](end_span), ister tamamen firmanıza özel yeni bir tasarım ve marka ismi talep edin[span_1](start_span)[span_1](end_span).</p>
         <div class="hero-buttons">
@@ -911,7 +920,7 @@ footer p {
 <section style="padding-top: 40px; padding-bottom: 20px;">
     <div class="features-grid">
         <div class="feature-card">
-            <div class="feature-icon">🛡️</div>
+            <div class="feature-icon">◼</div>
             <div class="feature-text">
                 <h4>Tam Koruma</h4>
                 <p>Satın alınan her konsept sadece size özel tescillenir.</p>
@@ -952,7 +961,7 @@ footer p {
             </div>
             <div class="product-info">
                 <h3>Mountain & Adventure Logo</h3>
-                <p>Dairəvi çərçivədə mavi-bəyaz dağ və meşə konseptli modern minimalist logo.</p>
+                <p>Dairəvi çərçivədə dağ və meşə konseptli modern minimalist siyah-gri logo.</p>
                 <div class="price-row">
                     <span class="price">5 AZN</span>
                     <button class="buy-btn" onclick="addToCart('Mountain & Adventure Logo', 5)">Səbətə at</button>
@@ -979,7 +988,7 @@ footer p {
                 <textarea id="customNotes" placeholder="İstediğiniz tarzı veya anahtar kelimeleri yazın..."></textarea>
             </div>
 
-            <button class="primary-btn" style="width: 100%; text-align: center;" onclick="sendCustomNameRequest()">Talebi Gönder</button>
+            <button class="primary-btn" style="width: 100%; text-align: center; cursor: pointer;" onclick="sendCustomNameRequest()">Talebi Gönder</button>
         </div>
 
         <!-- DOĞRUDAN İLETİŞİM / MESAJ FORMU -->
@@ -997,7 +1006,7 @@ footer p {
                 <textarea id="msgBody" placeholder="Detaylı isteklerinizi buraya yazın..."></textarea>
             </div>
 
-            <button class="primary-btn" style="width: 100%; text-align: center;" onclick="sendDirectMessage()">Mesajı Gönder</button>
+            <button class="primary-btn" style="width: 100%; text-align: center; cursor: pointer;" onclick="sendDirectMessage()">Mesajı Gönder</button>
         </div>
     </div>
 </section>
@@ -1047,14 +1056,12 @@ footer p {
             <button class="close-cart" onclick="closeCart()">&times;</button>
         </div>
         
-        <div class="cart-items-container" id="cartItems">
-            <!-- Dinamik sepet öğeleri buraya gelecek -->
-        </div>
+        <div class="cart-items-container" id="cartItems"></div>
 
         <div class="cart-summary">
             <div class="cart-total">
                 <span>Cəmi:</span>
-                <span id="cartTotal" style="color: var(--accent-blue);">0 AZN</span>
+                <span id="cartTotal">0 AZN</span>
             </div>
             <button class="checkout-btn" onclick="checkout()">Sifarişi Tamamla (E-posta ile Gönder)</button>
         </div>
@@ -1064,7 +1071,7 @@ footer p {
 <!-- FOOTER -->
 <footer>
     <a href="#" class="logo">Keen<span>Logo</span></a>
-    <p>Digital Branding & Design Stüdyosu</p>
+    <p>Siyah-Gri Digital Branding & Design Stüdyosu</p>
     <p style="margin-top:12px; font-size: 13px;">© 2026 KeenLogo. Bütün hüquqlar qorunur.</p>
 </footer>
 
@@ -1074,7 +1081,7 @@ function showToast(message) {
     const container = document.getElementById("toast-container");
     const toast = document.createElement("div");
     toast.className = "toast";
-    toast.innerHTML = `<span>✨</span> ${message}`;
+    toast.innerHTML = `<span>◼</span> ${message}`;
     container.appendChild(toast);
     setTimeout(() => {
         toast.remove();
