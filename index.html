@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,29 +54,24 @@ header{
     padding:0 20px;
 }
 
-.logo{
-    font-size:26px;
-    font-weight:900;
-    letter-spacing:-1px;
-    color:white;
+/* YENİ LOGO (SİMGE) */
+.logo-icon{
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
-    gap: 6px;
-}
-
-.logo span{
-    color: var(--accent-orange);
+    cursor: pointer;
 }
 
 nav{
     display:flex;
-    gap:22px;
+    gap:25px;
 }
 
 nav a{
     color: var(--text-muted);
     text-decoration:none;
-    font-size:14px;
+    font-size:15px;
     font-weight: 500;
     transition:.2s;
 }
@@ -213,7 +208,7 @@ section{
     color: var(--text-muted);
 }
 
-/* ================= STORE ================= */
+/* ================= STORE (HAZIR LOGOLAR) ================= */
 
 .products{
     display:grid;
@@ -246,6 +241,31 @@ section{
     position:relative;
     overflow:hidden;
     padding: 20px;
+}
+
+/* KISMI BLUR (FİLİGRAN) EFEKTİ */
+.blur-overlay {
+    position: absolute;
+    bottom: 20px;
+    left: 10%;
+    right: 10%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.blur-overlay span {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 2px;
 }
 
 .product-info{
@@ -432,13 +452,6 @@ footer{
     color: var(--text-muted);
 }
 
-.footer-logo{
-    color:white;
-    font-weight:bold;
-    font-size:22px;
-    margin-bottom:6px;
-}
-
 /* ================= MODAL ================= */
 
 .modal{
@@ -503,15 +516,34 @@ footer{
 
 <header>
 <div class="navbar">
-<div class="logo">
-Keen<span>Logo</span>
+
+<!-- YENİ SİMGE LOGO -->
+<div class="logo-icon" onclick="window.scrollTo(0,0)">
+    <svg viewBox="0 0 100 100" width="100%" height="100%">
+        <!-- 1000274924.png baz alınarak çizilmiş keskin hatlı metalik K simgesi -->
+        <path d="M15,20 L35,15 L35,45 L70,15 L90,25 L50,55 L95,85 L75,90 L35,60 L35,85 L15,80 Z" 
+              fill="url(#metalGrad)" 
+              stroke="#555" stroke-width="1" stroke-linejoin="bevel"/>
+        <!-- İç Gölgeler/Vurgular için ek path -->
+        <path d="M35,45 L70,15 L78,20 L40,52 Z" fill="rgba(255,255,255,0.4)"/>
+        <path d="M50,55 L95,85 L85,88 L43,60 Z" fill="rgba(0,0,0,0.3)"/>
+        
+        <defs>
+            <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="30%" stop-color="#a0a5b0" />
+                <stop offset="70%" stop-color="#d0d5e0" />
+                <stop offset="100%" stop-color="#707580" />
+            </linearGradient>
+        </defs>
+    </svg>
 </div>
 
+<!-- GÜNCELLENMİŞ MENÜ -->
 <nav>
-<a href="#home">Ana səhifə</a>
-<a href="#store">Vitrin</a>
-<a href="#custom-name">Özel Firma İsmi Fikri</a>
-<a href="#contact">Bizə Mesaj Yazın</a>
+<a href="#hazir-logolar">Hazır Logolar</a>
+<a href="#kendi-firmani-sec">Kendi firmanı seç</a>
+<a href="#tasarimin-hakkinda-konus">Tasarımın hakkında konuş</a>
 </nav>
 
 <button class="cart-button" onclick="openCart()">
@@ -526,36 +558,39 @@ Keen<span>Logo</span>
 <div class="hero" id="home">
 <div class="hero-content">
 
-<div class="badge">KeenLogo Official Marketplace</div>
+<div class="badge">KeenLogo Tasarım Stüdyosu</div>
 
-<h1>Your Brand.<br><span>Your Identity.</span></h1>
+<h1>Sizin Markanız.<br><span>Sizin Kimliğiniz.</span></h1>
 
-<p>Eksklüziv logo dizaynları və xüsusi brend həlləri. Brendiniz üçün ən uyğun konseptləri kəşf edin.</p>
+<p>İster hazır logolarımızdan birini seçin, ister tamamen firmanıza özel yeni bir tasarım ve marka ismi talep edin.</p>
 
 <div class="hero-buttons">
-<button class="primary" onclick="document.getElementById('store').scrollIntoView()">Logoya bax</button>
-<button class="secondary" onclick="document.getElementById('custom-name').scrollIntoView()">Firma İsmi İsteği</button>
+<button class="primary" onclick="document.getElementById('hazir-logolar').scrollIntoView()">Vitrine Göz At</button>
 </div>
 
 </div>
 </div>
 
 
-<!-- ================= STORE ================= -->
+<!-- ================= HAZIR LOGOLAR (Vitrin) ================= -->
 
-<section id="store">
+<section id="hazir-logolar">
 
 <div class="section-title">
-<h2>Logo Vitrini</h2>
-<p>Hazır xüsusi dizaynlı logo konseptimiz.</p>
+<h2>Hazır Logolar</h2>
+<p>Satışta olan özel tasarım konseptlerimiz.</p>
 </div>
 
 <div class="products">
 
-<!-- YALNIZ GÖNDƏRİLƏN LOGO VİTRİNDƏ -->
 <div class="product">
 <div class="product-image">
-    <!-- Narıncı dağ və meşə logosunun vector/SVG çəkilişi -->
+    
+    <!-- Kısmi Blur (Filigran) Katmanı -->
+    <div class="blur-overlay">
+        <span>KEENLOGO KORUMASI</span>
+    </div>
+
     <svg viewBox="0 0 300 300" width="220" height="220">
         <circle cx="150" cy="150" r="135" stroke="#f97316" stroke-width="8" fill="none"/>
         <path d="M 150,80 L 195,160 L 225,125 L 260,185 L 40,185 L 105,120 Z" fill="none" stroke="#f97316" stroke-width="7" stroke-linejoin="round"/>
@@ -584,45 +619,45 @@ Keen<span>Logo</span>
 </section>
 
 
-<!-- ================= ÖZEL FİRMA İSMİ FİKRİ ================= -->
+<!-- ================= KENDİ FİRMANI SEÇ (Özel İsim) ================= -->
 
-<section id="custom-name">
+<section id="kendi-firmani-sec">
 
 <div class="section-title">
-<h2>Özel Firma İsmi Fikri</h2>
-<p>Biznesiniz üçün unikal ad və ona uyğun logo ideyası tələb edin.</p>
+<h2>Kendi firmanı seç</h2>
+<p>İşletmeniz için benzersiz bir ad ve logoya mı ihtiyacınız var?</p>
 </div>
 
 <div class="form-box">
 <p style="color:var(--text-muted); margin-bottom:20px; font-size:14px; text-align:center;">
-Yeni bir brend yaradırsınızsa və ya şirkətiniz üçün özəl ad / logo konsepti istəyirsinizsə, tələblərinizi yazın. Məlumatlar birbaşa <strong>keendesignlogo@gmail.com</strong> ünvanına göndəriləcək.
+Firmanızın faaliyet alanını ve tarzını bize iletin, size özel marka ismi önerileri ve logo fikirleri sunalım. (Talebiniz <strong>keendesignlogo@gmail.com</strong> adresine iletilecektir.)
 </p>
 
 <div class="form-group">
-<label>Fəaliyyət Sahəsi (Sektor)</label>
-<input id="customSector" type="text" placeholder="Məsələn: İT, geyim markası, kafe, tikinti...">
+<label>Faaliyet Alanı (Sektör)</label>
+<input id="customSector" type="text" placeholder="Örn: Teknoloji, Kafe, Giyim, E-Ticaret...">
 </div>
 
 <div class="form-group">
-<label>İstədiyiniz Stil və ya Qeydlər</label>
-<textarea id="customNotes" placeholder="Arzuladığınız ad stili və ya logo haqqında əlavə qeydlər..."></textarea>
+<label>Hedef Kitle ve Beklentileriniz</label>
+<textarea id="customNotes" placeholder="Markanız nasıl bir his uyandırmalı? Eklemek istediğiniz detaylar..."></textarea>
 </div>
 
 <button class="primary" style="width:100%;" onclick="sendCustomNameRequest()">
-📩 Fikir Tələb Et (Gmail-ə Keç)
+📩 Fikir Talep Et
 </button>
 </div>
 
 </section>
 
 
-<!-- ================= BİZƏ MESAJ YAZIN ================= -->
+<!-- ================= TASARIMIN HAKKINDA KONUŞ (Özel İletişim) ================= -->
 
-<section id="contact">
+<section id="tasarimin-hakkinda-konus">
 
 <div class="section-title">
-<h2>Bizə Mesaj Yazın</h2>
-<p>Suallarınız və ya xüsusi sifarişləriniz üçün birbaşa e-poçt ünvanımıza yazın.</p>
+<h2>Tasarımın hakkında konuş</h2>
+<p>Özel logo siparişleri veya projeleriniz için detayları görüşelim.</p>
 </div>
 
 <div class="form-box">
@@ -632,17 +667,17 @@ Yeni bir brend yaradırsınızsa və ya şirkətiniz üçün özəl ad / logo ko
 </div>
 
 <div class="form-group">
-<label>Mövzu</label>
-<input id="msgSubject" type="text" placeholder="Mesajınızın mövzusu">
+<label>Konu</label>
+<input id="msgSubject" type="text" placeholder="Tasarım talebinizin konusu">
 </div>
 
 <div class="form-group">
-<label>Mesajınız</label>
-<textarea id="msgBody" placeholder="Mesajınızı bura daxil edin..."></textarea>
+<label>Proje Detayları</label>
+<textarea id="msgBody" placeholder="Logonuzda hangi renkler olmalı? Nasıl bir şekil hayal ediyorsunuz?"></textarea>
 </div>
 
 <button class="primary" style="width:100%;" onclick="sendDirectMessage()">
-📧 Mesajı Göndər (Gmail)
+📧 İletişime Geç
 </button>
 </div>
 
@@ -663,7 +698,7 @@ Yeni bir brend yaradırsınızsa və ya şirkətiniz üçün özəl ad / logo ko
 <span id="cartTotal">0 AZN</span>
 </div>
 
-<button class="checkout" onclick="checkout()">Sifarişi Göndər (Gmail)</button>
+<button class="checkout" onclick="checkout()">Siparişi Tamamla (Gmail)</button>
 </div>
 </div>
 
@@ -672,9 +707,9 @@ Yeni bir brend yaradırsınızsa və ya şirkətiniz üçün özəl ad / logo ko
 
 <div class="modal" id="messageModal">
 <div class="modal-box">
-<h2 id="modalTitle">Bildiriş</h2>
-<p id="modalText">Məlumat</p>
-<button onclick="closeModal()">Bağla</button>
+<h2 id="modalTitle">Bildirim</h2>
+<p id="modalText">Bilgi</p>
+<button onclick="closeModal()">Kapat</button>
 </div>
 </div>
 
@@ -682,9 +717,15 @@ Yeni bir brend yaradırsınızsa və ya şirkətiniz üçün özəl ad / logo ko
 <!-- ================= FOOTER ================= -->
 
 <footer>
-<div class="footer-logo">KeenLogo</div>
-<p>Digital Logo Marketplace & Branding Services</p>
-<p style="margin-top:15px; font-size: 12px;">© 2026 KeenLogo. Bütün hüquqlar qorunur.</p>
+<div style="display:flex; justify-content:center; align-items:center; gap:8px; margin-bottom:10px;">
+    <!-- Footer Küçük Logo -->
+    <svg viewBox="0 0 100 100" width="25" height="25">
+        <path d="M15,20 L35,15 L35,45 L70,15 L90,25 L50,55 L95,85 L75,90 L35,60 L35,85 L15,80 Z" fill="#777" stroke="#333" stroke-width="1"/>
+    </svg>
+    <span style="color:white; font-weight:bold; font-size:18px;">KeenLogo</span>
+</div>
+<p>Digital Branding & Design</p>
+<p style="margin-top:10px; font-size: 12px;">© 2026 KeenLogo. Tüm hakları saklıdır.</p>
 </footer>
 
 
@@ -749,15 +790,15 @@ function closeCart(){
 
 function checkout(){
     if(cart.length === 0){
-        showMessage("Səbət boşdur", "Əvvəlcə səbətə logo əlavə edin.");
+        showMessage("Səbət boşdur", "Lütfen önce vitrinden bir logo seçin.");
         return;
     }
     
     let itemsList = cart.map(i => `- ${i.name} (${i.price} AZN)`).join('\n');
     let total = cart.reduce((sum, i) => sum + i.price, 0);
     
-    let subject = encodeURIComponent("Yeni Logo Sifarişi - KeenLogo");
-    let body = encodeURIComponent(`Salam, aşağıdakı logoları satın almaq istəyirəm:\n\n${itemsList}\n\nÜmumi Məbləğ: ${total} AZN`);
+    let subject = encodeURIComponent("Yeni Hazır Logo Siparişi - KeenLogo");
+    let body = encodeURIComponent(`Merhaba, aşağıdaki hazır logoları satın almak istiyorum:\n\n${itemsList}\n\nToplam Tutar: ${total} AZN`);
     
     window.location.href = `mailto:keendesignlogo@gmail.com?subject=${subject}&body=${body}`;
 }
@@ -769,22 +810,22 @@ function sendCustomNameRequest() {
     const notes = document.getElementById("customNotes").value.trim();
 
     if(!sector && !notes) {
-        showMessage("Məlumat Daxil Edin", "Zəhmət olmasa fəaliyyət sahənizi və ya istəyinizi qeyd edin.");
+        showMessage("Eksik Bilgi", "Lütfen sektörünüzü veya beklentilerinizi belirtin.");
         return;
     }
 
-    const subject = encodeURIComponent("Özel Firma İsmi ve Logo İsteği");
-    const body = encodeURIComponent(`Salam KeenLogo,\n\nŞirkət/Brend üçün xüsusi ad və logo fikri tələb edirəm:\n\n• Sektor/Sahə: ${sector}\n• Qeydlər/İstəklər: ${notes}`);
+    const subject = encodeURIComponent("Yeni Firma İsmi ve Konsept Talebi");
+    const body = encodeURIComponent(`Merhaba KeenLogo,\n\nİşletmem için özel bir isim ve logo fikri talep ediyorum:\n\n• Faaliyet Alanı (Sektör): ${sector}\n• Beklentiler / Detaylar: ${notes}`);
 
     window.location.href = `mailto:keendesignlogo@gmail.com?subject=${subject}&body=${body}`;
 }
 
 function sendDirectMessage() {
-    const msgSubject = document.getElementById("msgSubject").value.trim() || "KeenLogo Müraciət";
+    const msgSubject = document.getElementById("msgSubject").value.trim() || "Özel Tasarım Görüşmesi";
     const msgBody = document.getElementById("msgBody").value.trim();
 
     if(!msgBody) {
-        showMessage("Mesaj Mətni Boşdur", "Zəhmət olmasa göndərmək istədiyiniz mesajı yazın.");
+        showMessage("Mesaj Alanı Boş", "Lütfen tasarım detaylarını içeren bir mesaj yazın.");
         return;
     }
 
