@@ -35,6 +35,27 @@ body{
     overflow-x: hidden;
 }
 
+/* ================= ARKA PLAN VE ANİMASYON (Aşağıdan Yukarı) ================= */
+
+.bg-pattern {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-image: url('1000274954_2.jpg');[span_0](start_span)[span_0](end_span)
+    background-size: 300px;
+    opacity: 0.15; 
+    filter: blur(5px); 
+    z-index: -1;
+    animation: scrollBackgroundUp 15s linear infinite;
+}
+
+@keyframes scrollBackgroundUp {
+    0% { background-position: 0 300px; } 
+    100% { background-position: 0 0; }   
+}
+
 /* ================= REKLAM ŞERİDİ (PROMO BANNER) ================= */
 
 .promo-banner {
@@ -219,42 +240,19 @@ header{
     color: var(--accent-blue);
 }
 
-/* ================= HERO (İstediğin Arka Plan ve Animasyon) ================= */
+/* ================= HERO ================= */
 
 .hero{
-    position: relative;
-    min-height:550px;
+    min-height:500px;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
     padding:80px 20px;
-    overflow: hidden;
-}
-
-/* Hero alanına özel aşağı süzülen, blurlu arka plan */
-.hero-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('1000274954_3.jpg'); /* İstediğin arka plan görseli */
-    background-size: 300px;
-    opacity: 0.18; /* Hafif soluk */
-    filter: blur(5px); /* Rahatsız etmesin diye blur */
-    z-index: 1;
-    animation: scrollHeroDown 18s linear infinite; /* Yavaşça aşağı süzülen animasyon */
-}
-
-@keyframes scrollHeroDown {
-    0% { background-position: 0 0; }
-    100% { background-position: 0 300px; }
+    background: radial-gradient(circle at center, rgba(15, 23, 42, 0.6) 0%, transparent 70%);
 }
 
 .hero-content{
-    position: relative;
-    z-index: 2;
     max-width:850px;
 }
 
@@ -366,10 +364,12 @@ section{
     overflow:hidden;
 }
 
+/* Yeni eklenen logo görseli */
 .product-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* Turuncu logoyu mavi temaya uyarlamak için filtre */
     filter: hue-rotate(150deg) saturate(1.5);
 }
 
