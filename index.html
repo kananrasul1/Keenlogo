@@ -220,6 +220,11 @@ header{
     display: flex;
     align-items: center;
     gap: 12px;
+    transition: var(--transition-smooth);
+}
+
+.sidebar-links a:hover {
+    background: var(--card-hover);
 }
 
 /* ================= HERO BÖLÜMÜ & HAREKETLİ ARKA PLAN ================= */
@@ -415,7 +420,6 @@ header{
     overflow:hidden;
 }
 
-/* BLURLU (KORUMALI) LOGO ÖNİZLEMESİ */
 .product-image svg {
     width: 100%;
     height: 100%;
@@ -552,7 +556,7 @@ header{
     text-align: center;
 }
 
-/* ================= TOAST & SEPET ================= */
+/* ================= TOAST & MODALLER ================= */
 #toast-container {
     position: fixed;
     bottom: 30px;
@@ -700,6 +704,7 @@ footer p {
     </div>
     <div class="sidebar-links">
         <a href="#" onclick="openCart(); toggleSidebar();">🛒 Sepeti Aç</a>
+        <a href="#" onclick="openPreviewInfo(); toggleSidebar();">🛡️ <span data-i18n="menuPreview">Korumalı Ön İzleme Nedir?</span></a>
     </div>
 </div>
 
@@ -708,7 +713,7 @@ footer p {
     <div class="floating-symbols" id="floatingSymbols"></div>
 
     <div class="hero-content">
-        <span class="badge">KeenLogo Siyah-Gri Stüdyo Koleksiyonu</span>
+        <span class="badge">KeenLogo Özel Koleksiyon</span>
         <h1>Sizin Markanız.<br><span>Sizin Kimliğiniz.</span></h1>
         <p>İster hazır logolarımızdan birini seçin, ister tamamen firmanıza özel yeni bir tasarım ve marka ismi talep edin.</p>
     </div>
@@ -722,7 +727,7 @@ footer p {
         <button class="tab-btn" id="btnTab3" onclick="switchTab('tab-ozel', this)">💬 Özel Tasarım Görüşmesi</button>
     </div>
 
-    <!-- SEKME 1: HAZIR LOGOLAR (GÖMÜLÜ VEKTÖREL & BLURLU VİTRİN) -->
+    <!-- SEKME 1: HAZIR LOGOLAR -->
     <div class="tab-pane active" id="tab-logolar">
         <div class="section-title">
             <h2 id="sec1Title">Hazır Logolar</h2>
@@ -741,7 +746,6 @@ footer p {
                         <path d="M195,140 L215,190 L245,210 M145,230 L160,195 L195,140" fill="none" stroke="#ff7700" stroke-width="3"/>
                         <path d="M310,250 L320,215 L330,250 Z M320,235 L328,210 L336,235 Z" fill="#ff7700"/>
                         <path d="M60,250 Q200,280 340,250" fill="none" stroke="#ff7700" stroke-width="4"/>
-                        <!-- KeenLogo 'K' Monogramı Merkezde -->
                         <path d="M175,175 L190,175 L190,200 L215,175 L230,175 L202,203 L228,230 L212,230 L190,208 L190,230 L175,230 Z" fill="#ffffff" opacity="0.9"/>
                     </svg>
                 </div>
@@ -773,7 +777,6 @@ footer p {
                             <polygon points="200,165 202,173 210,175 202,177 200,185 198,177 190,175 198,173" opacity="0.9"/>
                             <polygon points="280,130 281.5,135 287,136.5 281.5,138 280,143 278.5,138 273,136.5 278.5,135" opacity="0.8"/>
                         </g>
-                        <!-- KeenLogo 'K' Monogramı Merkezde -->
                         <path d="M182,182 L194,182 L194,202 L216,182 L228,182 L205,205 L226,228 L212,228 L194,210 L194,228 L182,228 Z" fill="#ffffff"/>
                     </svg>
                 </div>
@@ -828,6 +831,7 @@ footer p {
     </div>
 </section>
 
+<!-- SEPET PANELİ -->
 <div class="overlay" id="cartOverlay">
     <div class="cart-panel">
         <div class="cart-panel-header">
@@ -845,6 +849,19 @@ footer p {
     </div>
 </div>
 
+<!-- KORUMALI ÖN İZLEME BİLGİ PANELİ -->
+<div class="overlay" id="previewInfoOverlay">
+    <div class="cart-panel">
+        <div class="cart-panel-header">
+            <h3 id="previewModalTitle">Korumalı Ön İzleme Nedir?</h3>
+            <button class="close-cart" onclick="closePreviewInfo()">&times;</button>
+        </div>
+        <div style="padding: 20px 0; color: var(--text-muted); font-size: 15px; line-height: 1.8;">
+            <p id="previewModalText">Korumalı ön izleme, ürünleri güvende tutar, ve satın alınmadan önceki zaman içerisinde ürünün çalınmaması için orijinal tasarıma yakın olacak şekilde tasarlanmıştır.</p>
+        </div>
+    </div>
+</div>
+
 <footer>
     <a href="#" class="logo">Keen<span>Logo</span></a>
     <p class="footer-desc">Siyah-Gri Digital Branding & Design Stüdyosu</p>
@@ -857,7 +874,6 @@ footer p {
 </footer>
 
 <script>
-// VEKTÖREL SVG SEMBOLLERİNİ DİNAMİK OLARAK SÜZÜLDÜREN SİSTEM
 window.addEventListener("DOMContentLoaded", () => {
     const svgs = [
         `<svg viewBox="0 0 100 100" width="100%" height="100%"><polygon points="50,5 92,28 92,72 50,95 8,72 8,28" fill="none" stroke="#cccccc" stroke-width="4"/><polygon points="50,95 92,72 50,58 8,72" fill="#333333" opacity="0.6"/></svg>`,
@@ -889,11 +905,10 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// ÇEVİRİ SÖZLÜĞÜ (TR / EN)
 const translations = {
     tr: {
         promo: "◼ KÖMÜR GRİSİ & OBSİDİYEN SİYAH ESTETİK • KeenLogo Tasarım Stüdyoları Aktif • Hazır Logo Konseptleri • Visa Kart Uyumlu!",
-        badge: "KeenLogo Siyah-Gri Stüdyo Koleksiyonu",
+        badge: "KeenLogo Özel Koleksiyon",
         heroTitle1: "Sizin Markanız.",
         heroTitle2: "Sizin Kimliğiniz.",
         heroDesc: "İster hazır logolarımızdan birini seçin, ister tamamen firmanıza özel yeni bir tasarım ve marka ismi talep edin.",
@@ -903,6 +918,9 @@ const translations = {
         sec1Title: "Hazır Logolar",
         sec1Desc: "Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.",
         previewBadge: "KORUMALI ÖNİZLEME",
+        menuPreview: "Korumalı Ön İzleme Nedir?",
+        previewModalTitle: "Korumalı Ön İzleme Nedir?",
+        previewModalText: "Korumalı ön izleme, ürünleri güvende tutar, ve satın alınmadan önceki zaman içerisinde ürünün çalınmaması için orijinal tasarıma yakın olacak şekilde tasarlanmıştır.",
         prod1Desc: "Siyah arka plan üzerinde turuncu hatlı dağ ve KeenLogo entegre konseptli modern logo.",
         prod2Desc: "Koyu arka plan üzerinde ışıltılı altın rengi galaksi ve KeenLogo entegre konsepti.",
         buyBtn: "Sepete Ekle",
@@ -930,7 +948,7 @@ const translations = {
     },
     en: {
         promo: "◼ CHARCOAL GRAY & OBSIDIAN BLACK AESTHETIC • KeenLogo Design Studios Active • Ready Logo Concepts • Visa Card Compatible!",
-        badge: "KeenLogo Black-Gray Studio Collection",
+        badge: "KeenLogo Special Collection",
         heroTitle1: "Your Brand.",
         heroTitle2: "Your Identity.",
         heroDesc: "Choose from our ready-made logos or request a completely custom design and brand name tailored to your business.",
@@ -940,6 +958,9 @@ const translations = {
         sec1Title: "Ready Logos",
         sec1Desc: "Choose any custom design concept from our showcase.",
         previewBadge: "PROTECTED PREVIEW",
+        menuPreview: "What is Protected Preview?",
+        previewModalTitle: "What is Protected Preview?",
+        previewModalText: "Protected preview keeps your products safe and is designed to be close to the original design to prevent theft before purchase.",
         prod1Desc: "Modern mountain and nature concept logo with orange lines and integrated KeenLogo.",
         prod2Desc: "Glowing golden galaxy and integrated KeenLogo concept on a dark background.",
         buyBtn: "Add to Cart",
@@ -996,6 +1017,10 @@ function updateLanguageUI() {
     document.getElementById("sec1Desc").innerText = t.sec1Desc;
 
     document.querySelectorAll(".preview-badge").forEach(el => el.innerText = t.previewBadge);
+    document.querySelectorAll("[data-i18n='menuPreview']").forEach(el => el.innerText = t.menuPreview);
+    document.getElementById("previewModalTitle").innerText = t.previewModalTitle;
+    document.getElementById("previewModalText").innerText = t.previewModalText;
+
     document.querySelectorAll("[data-i18n='prod1Desc']")[0].innerText = t.prod1Desc;
     document.querySelectorAll("[data-i18n='prod2Desc']")[0].innerText = t.prod2Desc;
     document.querySelectorAll("[data-i18n='buyBtn']").forEach(btn => btn.innerText = t.buyBtn);
@@ -1113,6 +1138,14 @@ function closeCart(){
     document.getElementById("cartOverlay").classList.remove("active");
 }
 
+function openPreviewInfo() {
+    document.getElementById("previewInfoOverlay").classList.add("active");
+}
+
+function closePreviewInfo() {
+    document.getElementById("previewInfoOverlay").classList.remove("active");
+}
+
 function checkout(){
     if(cart.length === 0){
         showToast(currentLang === 'tr' ? "Lütfen önce sepetinize bir ürün ekleyin." : "Please add an item to your cart first.");
@@ -1142,7 +1175,6 @@ function sendDirectMessage() {
     window.location.href = `mailto:keendesignlogo@gmail.com?subject=${encodeURIComponent("Özel Tasarım Mesajı")}&body=${encodeURIComponent(msgBody)}`;
 }
 
-// Sayfa yüklendiğinde kayıtlı dili uygula
 updateLanguageUI();
 </script>
 </body>
