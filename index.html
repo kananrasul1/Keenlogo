@@ -222,7 +222,7 @@ header{
     gap: 12px;
 }
 
-/* ================= HERO BÖLÜMÜ & AŞAĞI SÜZÜLEN ANİMASYON ================= */
+/* ================= HERO BÖLÜMÜ & HAREKETLİ ARKA PLAN ================= */
 .hero{
     position: relative;
     min-height:550px;
@@ -245,7 +245,6 @@ header{
     z-index: 1;
 }
 
-/* AŞAĞI SÜZÜLEN SEMBOLLER CONTAINER */
 .floating-symbols {
     position: absolute;
     top: 0;
@@ -259,25 +258,24 @@ header{
 
 .floating-symbol {
     position: absolute;
-    opacity: 0.12;
-    object-fit: contain;
+    opacity: 0.14;
     animation: floatDown linear infinite;
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.1));
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.15));
 }
 
 @keyframes floatDown {
     0% {
-        transform: translateY(-80px) rotate(0deg) scale(0.8);
+        transform: translateY(-90px) rotate(0deg) scale(0.85);
         opacity: 0;
     }
-    15% {
-        opacity: 0.15;
+    20% {
+        opacity: 0.18;
     }
-    85% {
-        opacity: 0.15;
+    80% {
+        opacity: 0.18;
     }
     100% {
-        transform: translateY(620px) rotate(360deg) scale(1.1);
+        transform: translateY(600px) rotate(360deg) scale(1.15);
         opacity: 0;
     }
 }
@@ -381,6 +379,96 @@ header{
     color: var(--text-muted);
     font-size: 15px;
     margin-bottom: 30px;
+}
+
+/* ================= ÜRÜN VİTRİNİ (GRID) ================= */
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(310px, 370px));
+    gap:28px;
+    justify-content: center;
+}
+
+.product{
+    background: var(--card-bg);
+    border:1px solid var(--border-color);
+    border-radius:16px;
+    overflow:hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+}
+
+.product:hover {
+    border-color: var(--text-muted);
+    transform: translateY(-4px);
+}
+
+.product-image{
+    height:280px;
+    background: #000000;
+    border-bottom: 1px solid var(--border-color);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info{
+    padding:24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-info h3{
+    margin-bottom:8px;
+    font-size: 19px;
+    color: white;
+}
+
+.product-info p{
+    color: var(--text-muted);
+    font-size:14px;
+    flex-grow: 1;
+}
+
+.price-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:24px;
+    padding-top:16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.price{
+    font-size:22px;
+    font-weight:700;
+    color: #ffffff;
+}
+
+.buy-btn{
+    border:1px solid var(--border-color);
+    background: #1a1a1a;
+    color: #fff;
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+    transition: var(--transition-smooth);
+}
+
+.buy-btn:hover {
+    background: #ffffff;
+    color: #050505;
 }
 
 /* ================= FORMLAR ================= */
@@ -593,7 +681,6 @@ footer p {
 
 <section class="hero">
     <div class="hero-bg"></div>
-    <!-- AŞAĞI SÜZÜLEN SEMBOLLER (ANİMASYON) -->
     <div class="floating-symbols" id="floatingSymbols"></div>
 
     <div class="hero-content">
@@ -611,17 +698,43 @@ footer p {
         <button class="tab-btn" id="btnTab3" onclick="switchTab('tab-ozel', this)">💬 Özel Tasarım Görüşmesi</button>
     </div>
 
-    <!-- SEKME 1: HAZIR LOGOLAR (BOŞ BİLDİRİMİ) -->
+    <!-- SEKME 1: HAZIR LOGOLAR (ÜRÜN VİTRİNİ) -->
     <div class="tab-pane active" id="tab-logolar">
         <div class="section-title">
             <h2 id="sec1Title">Hazır Logolar</h2>
             <p id="sec1Desc">Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.</p>
         </div>
 
-        <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 60px 20px; text-align: center; margin-top: 25px;">
-            <div style="font-size: 42px; margin-bottom: 15px;">⏳</div>
-            <h3 id="noListingTitle" style="color: white; font-size: 20px; margin-bottom: 8px;">Henüz Aktif İlan Yok</h3>
-            <p id="noListingDesc" style="color: var(--text-muted); font-size: 15px; max-width: 420px; margin: 0 auto;">Şu anda vitrinde sergilenen hazır logo bulunmuyor. Yeni konseptler yakında eklenecektir.</p>
+        <div class="products">
+            <!-- İLAN 1: ORANGE MOUNTAIN -->
+            <div class="product">
+                <div class="product-image">
+                    <img src="1000289333.jpg" alt="Orange Mountain Logo">
+                </div>
+                <div class="product-info">
+                    <h3>Orange Mountain</h3>
+                    <p data-i18n="prod1Desc">Siyah arka plan üzerinde turuncu hatlı dağ ve KeenLogo entegre konseptli modern logo.</p>
+                    <div class="price-row">
+                        <span class="price">5$</span>
+                        <button class="buy-btn" onclick="addToCart('Orange Mountain', 5, '$')" data-i18n="buyBtn">Sepete Ekle</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İLAN 2: GOLDEN GALAXY -->
+            <div class="product">
+                <div class="product-image">
+                    <img src="1000289334.jpg" alt="Golden Galaxy Logo">
+                </div>
+                <div class="product-info">
+                    <h3>Golden Galaxy</h3>
+                    <p data-i18n="prod2Desc">Koyu arka plan üzerinde ışıltılı altın rengi galaksi ve KeenLogo entegre konsepti.</p>
+                    <div class="price-row">
+                        <span class="price">2$</span>
+                        <button class="buy-btn" onclick="addToCart('Golden Galaxy', 2, '$')" data-i18n="buyBtn">Sepete Ekle</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -693,34 +806,34 @@ footer p {
 </footer>
 
 <script>
-// AŞAĞI SÜZÜLEN SEMBOLLERİ DİNAMİK OLARAK ÜRETEN SİSTEM
+// VEKTÖREL SVG SEMBOLLERİNİ DİNAMİK OLARAK SÜZÜLDÜREN SİSTEM
 window.addEventListener("DOMContentLoaded", () => {
-    const symbolImages = ['1000274924.png', '1000274951.png'];
+    const svgs = [
+        `<svg viewBox="0 0 100 100" width="100%" height="100%"><polygon points="50,5 92,28 92,72 50,95 8,72 8,28" fill="none" stroke="#cccccc" stroke-width="4"/><polygon points="50,95 92,72 50,58 8,72" fill="#333333" opacity="0.6"/></svg>`,
+        `<svg viewBox="0 0 100 100" width="100%" height="100%"><path d="M22,15 L42,15 L42,46 L74,15 L92,15 L58,49 L90,85 L70,85 L42,56 L42,85 L22,85 Z" fill="#ffffff"/></svg>`
+    ];
+
     const container = document.getElementById("floatingSymbols");
     if (container) {
-        for (let i = 0; i < 14; i++) {
-            const img = document.createElement("img");
-            img.src = symbolImages[Math.floor(Math.random() * symbolImages.length)];
-            img.className = "floating-symbol";
+        for (let i = 0; i < 12; i++) {
+            const div = document.createElement("div");
+            div.className = "floating-symbol";
+            div.innerHTML = svgs[Math.floor(Math.random() * svgs.length)];
             
-            // Rastgele boyut (40px - 70px)
-            const size = Math.floor(Math.random() * 30) + 40;
-            img.style.width = size + "px";
-            img.style.height = size + "px";
+            const size = Math.floor(Math.random() * 30) + 45;
+            div.style.width = size + "px";
+            div.style.height = size + "px";
             
-            // Yatay konum
-            img.style.left = Math.random() * 100 + "%";
-            img.style.top = -80 + "px";
+            div.style.left = Math.random() * 95 + "%";
+            div.style.top = -90 + "px";
             
-            // Süzülme hızı (8sn - 16sn)
-            const duration = Math.random() * 8 + 8;
-            img.style.animationDuration = duration + "s";
+            const duration = Math.random() * 7 + 9;
+            div.style.animationDuration = duration + "s";
             
-            // Gecikme süresi
-            const delay = Math.random() * 10;
-            img.style.animationDelay = delay + "s";
+            const delay = Math.random() * 9;
+            div.style.animationDelay = delay + "s";
             
-            container.appendChild(img);
+            container.appendChild(div);
         }
     }
 });
@@ -738,8 +851,9 @@ const translations = {
         tab3: "💬 Özel Tasarım Görüşmesi",
         sec1Title: "Hazır Logolar",
         sec1Desc: "Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.",
-        noListingTitle: "Henüz Aktif İlan Yok",
-        noListingDesc: "Şu anda vitrinde sergilenen hazır logo bulunmuyor. Yeni konseptler yakında eklenecektir.",
+        prod1Desc: "Siyah arka plan üzerinde turuncu hatlı dağ ve KeenLogo entegre konseptli modern logo.",
+        prod2Desc: "Koyu arka plan üzerinde ışıltılı altın rengi galaksi ve KeenLogo entegre konsepti.",
+        buyBtn: "Sepete Ekle",
         form1Title: "Firma İsmi & Konsept Talebi",
         form1Desc: "İşletmeniz için en uygun ismi bulalım ve sıfırdan konsept oluşturalım.",
         lblSector: "Faaliyet Alanı (Sektör)",
@@ -773,8 +887,9 @@ const translations = {
         tab3: "💬 Custom Design Consultation",
         sec1Title: "Ready Logos",
         sec1Desc: "Choose any custom design concept from our showcase.",
-        noListingTitle: "No Active Listings Yet",
-        noListingDesc: "There are currently no ready logos displayed in the showcase. New concepts will be added soon.",
+        prod1Desc: "Modern mountain and nature concept logo with orange lines and integrated KeenLogo.",
+        prod2Desc: "Glowing golden galaxy and integrated KeenLogo concept on a dark background.",
+        buyBtn: "Add to Cart",
         form1Title: "Company Name & Concept Request",
         form1Desc: "Let's find the best name for your business and build a concept from scratch.",
         lblSector: "Industry / Sector",
@@ -826,8 +941,10 @@ function updateLanguageUI() {
 
     document.getElementById("sec1Title").innerText = t.sec1Title;
     document.getElementById("sec1Desc").innerText = t.sec1Desc;
-    document.getElementById("noListingTitle").innerText = t.noListingTitle;
-    document.getElementById("noListingDesc").innerText = t.noListingDesc;
+
+    document.querySelectorAll("[data-i18n='prod1Desc']")[0].innerText = t.prod1Desc;
+    document.querySelectorAll("[data-i18n='prod2Desc']")[0].innerText = t.prod2Desc;
+    document.querySelectorAll("[data-i18n='buyBtn']").forEach(btn => btn.innerText = t.buyBtn);
 
     document.getElementById("form1Title").innerText = t.form1Title;
     document.getElementById("form1Desc").innerText = t.form1Desc;
