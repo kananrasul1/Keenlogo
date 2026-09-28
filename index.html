@@ -381,7 +381,7 @@ header{
     margin-bottom: 30px;
 }
 
-/* ================= ÜRÜN VİTRİNİ (GRID) ================= */
+/* ================= ÜRÜN VİTRİNİ (GRID & BLUR KORUMA) ================= */
 .products{
     display:grid;
     grid-template-columns:repeat(auto-fit, minmax(310px, 370px));
@@ -415,10 +415,34 @@ header{
     overflow:hidden;
 }
 
+/* BLURLU (KORUMALI) LOGO ÖNİZLEMESİ */
 .product-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: blur(5px);
+    transition: filter 0.4s ease;
+}
+
+.product-image:hover img {
+    filter: blur(1.5px);
+}
+
+.preview-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    backdrop-filter: blur(6px);
+    z-index: 2;
+    pointer-events: none;
 }
 
 .product-info{
@@ -698,7 +722,7 @@ footer p {
         <button class="tab-btn" id="btnTab3" onclick="switchTab('tab-ozel', this)">💬 Özel Tasarım Görüşmesi</button>
     </div>
 
-    <!-- SEKME 1: HAZIR LOGOLAR (ÜRÜN VİTRİNİ) -->
+    <!-- SEKME 1: HAZIR LOGOLAR (BLURLU ÜRÜN VİTRİNİ) -->
     <div class="tab-pane active" id="tab-logolar">
         <div class="section-title">
             <h2 id="sec1Title">Hazır Logolar</h2>
@@ -709,7 +733,8 @@ footer p {
             <!-- İLAN 1: ORANGE MOUNTAIN -->
             <div class="product">
                 <div class="product-image">
-                    <img src="1000289333.jpg" alt="Orange Mountain Logo">
+                    <span class="preview-badge" data-i18n="previewBadge">KORUMALI ÖNİZLEME</span>
+                    <img src="624a0052-8d86-429a-afb0-ea4cd08f11be-1_all_21695_2.jpg" alt="Orange Mountain Logo">
                 </div>
                 <div class="product-info">
                     <h3>Orange Mountain</h3>
@@ -724,7 +749,8 @@ footer p {
             <!-- İLAN 2: GOLDEN GALAXY -->
             <div class="product">
                 <div class="product-image">
-                    <img src="1000289334.jpg" alt="Golden Galaxy Logo">
+                    <span class="preview-badge" data-i18n="previewBadge">KORUMALI ÖNİZLEME</span>
+                    <img src="1000289329_2.jpg" alt="Golden Galaxy Logo">
                 </div>
                 <div class="product-info">
                     <h3>Golden Galaxy</h3>
@@ -851,6 +877,7 @@ const translations = {
         tab3: "💬 Özel Tasarım Görüşmesi",
         sec1Title: "Hazır Logolar",
         sec1Desc: "Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.",
+        previewBadge: "KORUMALI ÖNİZLEME",
         prod1Desc: "Siyah arka plan üzerinde turuncu hatlı dağ ve KeenLogo entegre konseptli modern logo.",
         prod2Desc: "Koyu arka plan üzerinde ışıltılı altın rengi galaksi ve KeenLogo entegre konsepti.",
         buyBtn: "Sepete Ekle",
@@ -887,6 +914,7 @@ const translations = {
         tab3: "💬 Custom Design Consultation",
         sec1Title: "Ready Logos",
         sec1Desc: "Choose any custom design concept from our showcase.",
+        previewBadge: "PROTECTED PREVIEW",
         prod1Desc: "Modern mountain and nature concept logo with orange lines and integrated KeenLogo.",
         prod2Desc: "Glowing golden galaxy and integrated KeenLogo concept on a dark background.",
         buyBtn: "Add to Cart",
@@ -942,6 +970,7 @@ function updateLanguageUI() {
     document.getElementById("sec1Title").innerText = t.sec1Title;
     document.getElementById("sec1Desc").innerText = t.sec1Desc;
 
+    document.querySelectorAll(".preview-badge").forEach(el => el.innerText = t.previewBadge);
     document.querySelectorAll("[data-i18n='prod1Desc']")[0].innerText = t.prod1Desc;
     document.querySelectorAll("[data-i18n='prod2Desc']")[0].innerText = t.prod2Desc;
     document.querySelectorAll("[data-i18n='buyBtn']").forEach(btn => btn.innerText = t.buyBtn);
