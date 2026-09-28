@@ -343,7 +343,121 @@ header{
 .section-title p{
     color: var(--text-muted);
     font-size: 15px;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+}
+
+/* ================= ÜRÜN VİTRİNİ (GRID) ================= */
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(310px, 370px));
+    gap:28px;
+    justify-content: center;
+}
+
+.product{
+    background: var(--card-bg);
+    border:1px solid var(--border-color);
+    border-radius:16px;
+    overflow:hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+}
+
+.product:hover {
+    border-color: var(--text-muted);
+    transform: translateY(-4px);
+}
+
+.product-image{
+    height:280px;
+    background: #111111;
+    border-bottom: 1px solid var(--border-color);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.blur-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 82%;
+    height: 56px;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.blur-overlay span {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+}
+
+.product-info{
+    padding:24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-info h3{
+    margin-bottom:8px;
+    font-size: 19px;
+    color: white;
+}
+
+.product-info p{
+    color: var(--text-muted);
+    font-size:14px;
+    flex-grow: 1;
+}
+
+.price-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:24px;
+    padding-top:16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.price{
+    font-size:22px;
+    font-weight:700;
+    color: #ffffff;
+}
+
+.buy-btn{
+    border:1px solid var(--border-color);
+    background: #1a1a1a;
+    color: #fff;
+    padding:10px 18px;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+    transition: var(--transition-smooth);
+}
+
+.buy-btn:hover {
+    background: #ffffff;
+    color: #050505;
 }
 
 /* ================= FORMLAR ================= */
@@ -571,17 +685,49 @@ footer p {
         <button class="tab-btn" id="btnTab3" onclick="switchTab('tab-ozel', this)">💬 Özel Tasarım Görüşmesi</button>
     </div>
 
-    <!-- SEKME 1: HAZIR LOGOLAR -->
+    <!-- SEKME 1: HAZIR LOGOLAR (VİTRİN İLANLARI) -->
     <div class="tab-pane active" id="tab-logolar">
         <div class="section-title">
             <h2 id="sec1Title">Hazır Logolar</h2>
             <p id="sec1Desc">Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.</p>
         </div>
 
-        <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 60px 20px; text-align: center; margin-top: 25px;">
-            <div style="font-size: 42px; margin-bottom: 15px;">⏳</div>
-            <h3 id="noListingTitle" style="color: white; font-size: 20px; margin-bottom: 8px;">Henüz Aktif İlan Yok</h3>
-            <p id="noListingDesc" style="color: var(--text-muted); font-size: 15px; max-width: 420px; margin: 0 auto;">Şu anda vitrinde sergilenen hazır logo bulunmuyor. Yeni konseptler yakında eklenecektir.</p>
+        <div class="products">
+            <!-- İLAN 1: ORANGE MOUNTAIN -->
+            <div class="product">
+                <div class="product-image">
+                    <img src="624a0052-8d86-429a-afb0-ea4cd08f11be-1_all_21695.jpg" alt="Orange Mountain Logo">
+                    <div class="blur-overlay">
+                        <span>KEENLOGO KORUMASI</span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 data-i18n="prod1Title">Orange Mountain</h3>
+                    <p data-i18n="prod1Desc">Siyah arka plan üzerinde turuncu hatlı dağ ve doğa konseptli modern logo.</p>
+                    <div class="price-row">
+                        <span class="price">5$</span>
+                        <button class="buy-btn" onclick="addToCart('Orange Mountain', 5, '$')" data-i18n="buyBtn">Sepete Ekle</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İLAN 2: GOLDEN GALAXY -->
+            <div class="product">
+                <div class="product-image">
+                    <img src="1000289329.jpg" alt="Golden Galaxy Logo">
+                    <div class="blur-overlay">
+                        <span>KEENLOGO KORUMASI</span>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <h3 data-i18n="prod2Title">Golden Galaxy</h3>
+                    <p data-i18n="prod2Desc">Koyu arka plan üzerinde ışıltılı altın rengi parçacıklardan oluşan spiral galaksi konsepti.</p>
+                    <div class="price-row">
+                        <span class="price">2$</span>
+                        <button class="buy-btn" onclick="addToCart('Golden Galaxy', 2, '$')" data-i18n="buyBtn">Sepete Ekle</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -666,8 +812,9 @@ const translations = {
         tab3: "💬 Özel Tasarım Görüşmesi",
         sec1Title: "Hazır Logolar",
         sec1Desc: "Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.",
-        noListingTitle: "Henüz Aktif İlan Yok",
-        noListingDesc: "Şu anda vitrinde sergilenen hazır logo bulunmuyor. Yeni konseptler yakında eklenecektir.",
+        prod1Desc: "Siyah arka plan üzerinde turuncu hatlı dağ ve doğa konseptli modern logo.",
+        prod2Desc: "Koyu arka plan üzerinde ışıltılı altın rengi parçacıklardan oluşan spiral galaksi konsepti.",
+        buyBtn: "Sepete Ekle",
         form1Title: "Firma İsmi & Konsept Talebi",
         form1Desc: "İşletmeniz için en uygun ismi bulalım ve sıfırdan konsept oluşturalım.",
         lblSector: "Faaliyet Alanı (Sektör)",
@@ -701,8 +848,9 @@ const translations = {
         tab3: "💬 Custom Design Consultation",
         sec1Title: "Ready Logos",
         sec1Desc: "Choose any custom design concept from our showcase.",
-        noListingTitle: "No Active Listings Yet",
-        noListingDesc: "There are currently no ready logos displayed in the showcase. New concepts will be added soon.",
+        prod1Desc: "Modern mountain and nature concept logo with orange lines on a dark background.",
+        prod2Desc: "Spiral galaxy and cosmic logo concept consisting of glowing golden particles on a dark background.",
+        buyBtn: "Add to Cart",
         form1Title: "Company Name & Concept Request",
         form1Desc: "Let's find the best name for your business and build a concept from scratch.",
         lblSector: "Industry / Sector",
@@ -754,8 +902,10 @@ function updateLanguageUI() {
 
     document.getElementById("sec1Title").innerText = t.sec1Title;
     document.getElementById("sec1Desc").innerText = t.sec1Desc;
-    document.getElementById("noListingTitle").innerText = t.noListingTitle;
-    document.getElementById("noListingDesc").innerText = t.noListingDesc;
+
+    document.querySelectorAll("[data-i18n='prod1Desc']")[0].innerText = t.prod1Desc;
+    document.querySelectorAll("[data-i18n='prod2Desc']")[0].innerText = t.prod2Desc;
+    document.querySelectorAll("[data-i18n='buyBtn']").forEach(btn => btn.innerText = t.buyBtn);
 
     document.getElementById("form1Title").innerText = t.form1Title;
     document.getElementById("form1Desc").innerText = t.form1Desc;
