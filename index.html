@@ -127,30 +127,6 @@ header{
     margin-left: 2px;
 }
 
-.nav-links-desktop {
-    display: none;
-    gap: 25px;
-}
-
-@media(min-width: 768px) {
-    .nav-links-desktop {
-        display: flex;
-        align-items: center;
-    }
-}
-
-.nav-links-desktop a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: var(--transition-smooth);
-}
-
-.nav-links-desktop a:hover {
-    color: var(--text-main);
-}
-
 .nav-right-actions {
     display: flex;
     align-items: center;
@@ -249,12 +225,12 @@ header{
 /* ================= HERO BÖLÜMÜ ================= */
 .hero{
     position: relative;
-    min-height:600px;
+    min-height:550px;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:100px 20px;
+    padding:80px 20px;
     overflow: hidden;
 }
 
@@ -306,42 +282,56 @@ header{
     margin:auto;
 }
 
-.hero-buttons{
-    margin-top:35px;
-    display:flex;
-    gap:14px;
-    justify-content:center;
-    flex-wrap:wrap;
+/* ================= SEKME (TAB) SİSTEMİ ================= */
+.services-section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
 }
 
-.primary-btn{
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    background: var(--card-bg);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    padding: 14px 26px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.tab-btn:hover {
+    color: var(--text-main);
+    background: var(--card-hover);
+}
+
+.tab-btn.active {
     background: #ffffff;
     color: #050505;
-    border:none;
-    padding:14px 28px;
-    border-radius:10px;
-    font-weight:700;
-    cursor:pointer;
-    text-decoration: none;
-    display: inline-block;
+    border-color: #ffffff;
 }
 
-.secondary-btn{
-    background: var(--card-bg);
-    color: var(--text-main);
-    border: 1px solid var(--border-color);
-    padding:14px 28px;
-    border-radius:10px;
-    font-weight:600;
-    cursor:pointer;
-    text-decoration: none;
-    display: inline-block;
+.tab-pane {
+    display: none;
 }
 
-section{
-    max-width:1200px;
-    margin:auto;
-    padding:80px 20px;
+.tab-pane.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .section-title h2{
@@ -353,13 +343,15 @@ section{
 .section-title p{
     color: var(--text-muted);
     font-size: 15px;
+    margin-bottom: 25px;
 }
 
 /* ================= FORMLAR ================= */
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 30px;
+    grid-template-columns: 1fr;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .form-box{
@@ -395,6 +387,20 @@ section{
 .form-group textarea{
     min-height:120px;
     resize:vertical;
+}
+
+.primary-btn{
+    background: #ffffff;
+    color: #050505;
+    border:none;
+    padding:14px 28px;
+    border-radius:10px;
+    font-weight:700;
+    cursor:pointer;
+    text-decoration: none;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
 }
 
 /* ================= TOAST & SEPET ================= */
@@ -529,12 +535,6 @@ footer p {
             <a href="#" class="logo">Keen<span>Logo</span></a>
         </div>
         
-        <div class="nav-links-desktop">
-            <a href="#hazir-logolar">Hazır Logolar</a>
-            <a href="#ozel-isim">İsim & Konsept</a>
-            <a href="#iletisim">Özel Tasarım</a>
-        </div>
-
         <div class="nav-right-actions">
             <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">EN</button>
             <button class="cart-button" onclick="openCart()">
@@ -550,9 +550,6 @@ footer p {
         <button class="close-sidebar" onclick="toggleSidebar()">&times;</button>
     </div>
     <div class="sidebar-links">
-        <a href="#hazir-logolar" onclick="toggleSidebar()">🎨 Hazır Logolar</a>
-        <a href="#ozel-isim" onclick="toggleSidebar()">💡 Firma İsim Önerisi</a>
-        <a href="#iletisim" onclick="toggleSidebar()">💬 Doğrudan Mesaj / Talep</a>
         <a href="#" onclick="openCart(); toggleSidebar();">🛒 Sepeti Aç</a>
     </div>
 </div>
@@ -563,55 +560,66 @@ footer p {
         <span class="badge">KeenLogo Siyah-Gri Stüdyo Koleksiyonu</span>
         <h1>Sizin Markanız.<br><span>Sizin Kimliğiniz.</span></h1>
         <p>İster hazır logolarımızdan birini seçin, ister tamamen firmanıza özel yeni bir tasarım ve marka ismi talep edin.</p>
-        <div class="hero-buttons">
-            <a href="#hazir-logolar" class="primary-btn">Vitrine Göz At</a>
-            <a href="#iletisim" class="secondary-btn">Özel İstek Gönder</a>
-        </div>
     </div>
 </section>
 
-<!-- VİTRİN - HENÜZ AKTİF İLAN YOK BİLDİRİMİ -->
-<section id="hazir-logolar">
-    <div class="section-title">
-        <h2>Hazır Logolar</h2>
-        <p>Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.</p>
+<!-- HİZMETLER SEKME (TAB) BÖLÜMÜ -->
+<section class="services-section">
+    <div class="tabs-container">
+        <button class="tab-btn active" id="btnTab1" onclick="switchTab('tab-logolar', this)">🎨 Hazır Logolar</button>
+        <button class="tab-btn" id="btnTab2" onclick="switchTab('tab-isim', this)">💡 İsim & Konsept Talebi</button>
+        <button class="tab-btn" id="btnTab3" onclick="switchTab('tab-ozel', this)">💬 Özel Tasarım Görüşmesi</button>
     </div>
 
-    <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 60px 20px; text-align: center; margin-top: 25px;">
-        <div style="font-size: 42px; margin-bottom: 15px;">⏳</div>
-        <h3 style="color: white; font-size: 20px; margin-bottom: 8px;">Henüz Aktif İlan Yok</h3>
-        <p style="color: var(--text-muted); font-size: 15px; max-width: 420px; margin: 0 auto;">Şu anda vitrinde sergilenen hazır logo bulunmuyor. Yeni konseptler yakında eklenecektir. Özel tasarım talepleriniz için aşağıdaki formu kullanabilirsiniz.</p>
-    </div>
-</section>
-
-<section id="ozel-isim">
-    <div class="form-grid">
-        <div class="form-box">
-            <h3>Firma İsmi & Konsept Talebi</h3>
-            <p>İşletmeniz için en uygun ismi bulalım ve sıfırdan konsept oluşturalım.</p>
-            <div class="form-group">
-                <label>Faaliyet Alanı (Sektör)</label>
-                <input type="text" id="customSector" placeholder="Örn: E-ticaret, Kafe, Yazılım...">
-            </div>
-            <div class="form-group">
-                <label>Beklentileriniz / Detaylar</label>
-                <textarea id="customNotes" placeholder="İstediğiniz tarzı veya anahtar kelimeleri yazın..."></textarea>
-            </div>
-            <button class="primary-btn" style="width: 100%; text-align: center; cursor: pointer;" onclick="sendCustomNameRequest()">Talebi Gönder</button>
+    <!-- SEKME 1: HAZIR LOGOLAR -->
+    <div class="tab-pane active" id="tab-logolar">
+        <div class="section-title">
+            <h2 id="sec1Title">Hazır Logolar</h2>
+            <p id="sec1Desc">Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.</p>
         </div>
 
-        <div class="form-box" id="iletisim">
-            <h3>Özel Tasarım Görüşmesi</h3>
-            <p>Aklınızdaki özel projeyi bize doğrudan iletin.</p>
-            <div class="form-group">
-                <label>Konu Başlığı</label>
-                <input type="text" id="msgSubject" placeholder="Özel Logo Tasarımı">
+        <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 60px 20px; text-align: center; margin-top: 25px;">
+            <div style="font-size: 42px; margin-bottom: 15px;">⏳</div>
+            <h3 id="noListingTitle" style="color: white; font-size: 20px; margin-bottom: 8px;">Henüz Aktif İlan Yok</h3>
+            <p id="noListingDesc" style="color: var(--text-muted); font-size: 15px; max-width: 420px; margin: 0 auto;">Şu anda vitrinde sergilenen hazır logo bulunmuyor. Yeni konseptler yakında eklenecektir.</p>
+        </div>
+    </div>
+
+    <!-- SEKME 2: İSİM & KONSEPT -->
+    <div class="tab-pane" id="tab-isim">
+        <div class="form-grid">
+            <div class="form-box">
+                <h3 id="form1Title">Firma İsmi & Konsept Talebi</h3>
+                <p id="form1Desc" style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">İşletmeniz için en uygun ismi bulalım ve sıfırdan konsept oluşturalım.</p>
+                <div class="form-group">
+                    <label id="lblSector">Faaliyet Alanı (Sektör)</label>
+                    <input type="text" id="customSector" placeholder="Örn: E-ticaret, Kafe, Yazılım...">
+                </div>
+                <div class="form-group">
+                    <label id="lblNotes">Beklentileriniz / Detaylar</label>
+                    <textarea id="customNotes" placeholder="İstediğiniz tarzı veya anahtar kelimeleri yazın..."></textarea>
+                </div>
+                <button class="primary-btn" onclick="sendCustomNameRequest()" id="btnSend1">Talebi Gönder</button>
             </div>
-            <div class="form-group">
-                <label>Mesajınız / Tasarım Detayları</label>
-                <textarea id="msgBody" placeholder="Detaylı isteklerinizi buraya yazın..."></textarea>
+        </div>
+    </div>
+
+    <!-- SEKME 3: ÖZEL TASARIM -->
+    <div class="tab-pane" id="tab-ozel">
+        <div class="form-grid">
+            <div class="form-box" id="iletisim">
+                <h3 id="form2Title">Özel Tasarım Görüşmesi</h3>
+                <p id="form2Desc" style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">Aklınızdaki özel projeyi bize doğrudan iletin.</p>
+                <div class="form-group">
+                    <label id="lblSubject">Konu Başlığı</label>
+                    <input type="text" id="msgSubject" placeholder="Özel Logo Tasarımı">
+                </div>
+                <div class="form-group">
+                    <label id="lblMsg">Mesajınız / Tasarım Detayları</label>
+                    <textarea id="msgBody" placeholder="Detaylı isteklerinizi buraya yazın..."></textarea>
+                </div>
+                <button class="primary-btn" onclick="sendDirectMessage()" id="btnSend2">Mesajı Gönder</button>
             </div>
-            <button class="primary-btn" style="width: 100%; text-align: center; cursor: pointer;" onclick="sendDirectMessage()">Mesajı Gönder</button>
         </div>
     </div>
 </section>
@@ -619,16 +627,16 @@ footer p {
 <div class="overlay" id="cartOverlay">
     <div class="cart-panel">
         <div class="cart-panel-header">
-            <h3>Sepetiniz</h3>
+            <h3 id="cartPanelTitle">Sepetiniz</h3>
             <button class="close-cart" onclick="closeCart()">&times;</button>
         </div>
         <div class="cart-items-container" id="cartItems"></div>
         <div class="cart-summary">
             <div class="cart-total" style="display:flex; justify-content:space-between; font-size:20px; font-weight:bold; margin-bottom:20px; color:white;">
-                <span>Toplam:</span>
+                <span id="totalLabel">Toplam:</span>
                 <span id="cartTotal">0</span>
             </div>
-            <button class="checkout-btn" onclick="checkout()">Siparişi Tamamla (E-posta ile Gönder)</button>
+            <button class="checkout-btn" id="checkoutBtnText" onclick="checkout()">Siparişi Tamamla (E-posta ile Gönder)</button>
         </div>
     </div>
 </div>
@@ -639,6 +647,7 @@ footer p {
     <div class="footer-contacts">
         <a href="https://youtube.com/@KeenLogo" target="_blank">📺 (YouTube) KeenLogo</a>
         <a href="mailto:keendesignlogo@gmail.com">✉️ (Gmail) keendesignlogo@gmail.com</a>
+        <a href="https://wa.me/994506554710" target="_blank">💬 (WhatsApp) +994 50 655 47 10</a>
     </div>
     <p style="margin-top:12px; font-size: 13px;">© 2026 KeenLogo. Bütün hakları saklıdır.</p>
 </footer>
@@ -648,75 +657,71 @@ footer p {
 const translations = {
     tr: {
         promo: "◼ KÖMÜR GRİSİ & OBSİDİYEN SİYAH ESTETİK • KeenLogo Tasarım Stüdyoları Aktif • Hazır Logo Konseptleri • Visa Kart Uyumlu!",
-        navReady: "Hazır Logolar",
-        navName: "İsim & Konsept",
-        navCustom: "Özel Tasarım",
-        cartBtn: "🛒 Sepet",
         badge: "KeenLogo Siyah-Gri Stüdyo Koleksiyonu",
         heroTitle1: "Sizin Markanız.",
         heroTitle2: "Sizin Kimliğiniz.",
         heroDesc: "İster hazır logolarımızdan birini seçin, ister tamamen firmanıza özel yeni bir tasarım ve marka ismi talep edin.",
-        heroBtn1: "Vitrine Göz At",
-        heroBtn2: "Özel İstek Gönder",
-        sectionTitle: "Hazır Logolar",
-        sectionDesc: "Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.",
+        tab1: "🎨 Hazır Logolar",
+        tab2: "💡 İsim & Konsept Talebi",
+        tab3: "💬 Özel Tasarım Görüşmesi",
+        sec1Title: "Hazır Logolar",
+        sec1Desc: "Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.",
         noListingTitle: "Henüz Aktif İlan Yok",
-        noListingDesc: "Şu anda vitrinde sergilenen hazır logo bulunmuyor. Yeni konseptler yakında eklenecektir. Özel tasarım talepleriniz için aşağıdaki formu kullanabilirsiniz.",
+        noListingDesc: "Şu anda vitrinde sergilenen hazır logo bulunmuyor. Yeni konseptler yakında eklenecektir.",
         form1Title: "Firma İsmi & Konsept Talebi",
         form1Desc: "İşletmeniz için en uygun ismi bulalım ve sıfırdan konsept oluşturalım.",
-        sectorLabel: "Faaliyet Alanı (Sektör)",
+        lblSector: "Faaliyet Alanı (Sektör)",
         sectorPlaceholder: "Örn: E-ticaret, Kafe, Yazılım...",
-        notesLabel: "Beklentileriniz / Detaylar",
+        lblNotes: "Beklentileriniz / Detaylar",
         notesPlaceholder: "İstediğiniz tarzı veya anahtar kelimeleri yazın...",
-        sendBtn1: "Talebi Gönder",
+        btnSend1: "Talebi Gönder",
         form2Title: "Özel Tasarım Görüşmesi",
         form2Desc: "Aklınızdaki özel projeyi bize doğrudan iletin.",
-        subjectLabel: "Konu Başlığı",
+        lblSubject: "Konu Başlığı",
         subjectPlaceholder: "Özel Logo Tasarımı",
-        msgLabel: "Mesajınız / Tasarım Detayları",
+        lblMsg: "Mesajınız / Tasarım Detayları",
         msgPlaceholder: "Detaylı isteklerinizi buraya yazın...",
-        sendBtn2: "Mesajı Gönder",
-        cartTitle: "Sepetiniz",
+        btnSend2: "Mesajı Gönder",
+        cartBtn: "🛒 Sepet",
+        cartPanelTitle: "Sepetiniz",
         emptyCart: "Sepetiniz boş.",
-        totalText: "Toplam:",
-        checkoutBtn: "Siparişi Tamamla (E-posta ile Gönder)",
+        totalLabel: "Toplam:",
+        checkoutBtnText: "Siparişi Tamamla (E-posta ile Gönder)",
         footerDesc: "Siyah-Gri Digital Branding & Design Stüdyosu",
         footerRights: "© 2026 KeenLogo. Bütün hakları saklıdır."
     },
     en: {
         promo: "◼ CHARCOAL GRAY & OBSIDIAN BLACK AESTHETIC • KeenLogo Design Studios Active • Ready Logo Concepts • Visa Card Compatible!",
-        navReady: "Ready Logos",
-        navName: "Name & Concept",
-        navCustom: "Custom Design",
-        cartBtn: "🛒 Cart",
         badge: "KeenLogo Black-Gray Studio Collection",
         heroTitle1: "Your Brand.",
         heroTitle2: "Your Identity.",
         heroDesc: "Choose from our ready-made logos or request a completely custom design and brand name tailored to your business.",
-        heroBtn1: "Browse Showcase",
-        heroBtn2: "Send Custom Request",
-        sectionTitle: "Ready Logos",
-        sectionDesc: "Choose any custom design concept from our showcase.",
+        tab1: "🎨 Ready Logos",
+        tab2: "💡 Name & Concept Request",
+        tab3: "💬 Custom Design Consultation",
+        sec1Title: "Ready Logos",
+        sec1Desc: "Choose any custom design concept from our showcase.",
         noListingTitle: "No Active Listings Yet",
-        noListingDesc: "There are currently no ready logos displayed in the showcase. New concepts will be added soon. You can use the form below for custom design requests.",
+        noListingDesc: "There are currently no ready logos displayed in the showcase. New concepts will be added soon.",
         form1Title: "Company Name & Concept Request",
         form1Desc: "Let's find the best name for your business and build a concept from scratch.",
-        sectorLabel: "Industry / Sector",
+        lblSector: "Industry / Sector",
         sectorPlaceholder: "E.g., E-commerce, Cafe, Software...",
-        notesLabel: "Your Expectations / Details",
+        lblNotes: "Your Expectations / Details",
         notesPlaceholder: "Write your preferred style or keywords...",
-        sendBtn1: "Send Request",
+        btnSend1: "Send Request",
         form2Title: "Custom Design Consultation",
         form2Desc: "Send your custom project idea directly to us.",
-        subjectLabel: "Subject",
+        lblSubject: "Subject",
         subjectPlaceholder: "Custom Logo Design",
-        msgLabel: "Your Message / Design Details",
+        lblMsg: "Your Message / Design Details",
         msgPlaceholder: "Write your detailed requests here...",
-        sendBtn2: "Send Message",
-        cartTitle: "Your Cart",
+        btnSend2: "Send Message",
+        cartBtn: "🛒 Cart",
+        cartPanelTitle: "Your Cart",
         emptyCart: "Your cart is empty.",
-        totalText: "Total:",
-        checkoutBtn: "Complete Order (Send via Email)",
+        totalLabel: "Total:",
+        checkoutBtnText: "Complete Order (Send via Email)",
         footerDesc: "Black-Gray Digital Branding & Design Studio",
         footerRights: "© 2026 KeenLogo. All rights reserved."
     }
@@ -735,12 +740,6 @@ function updateLanguageUI() {
     document.getElementById("langToggle").innerText = currentLang === "tr" ? "EN" : "TR";
     
     document.querySelector(".promo-text").innerText = t.promo;
-    const desktopLinks = document.querySelectorAll(".nav-links-desktop a");
-    if(desktopLinks.length >= 3) {
-        desktopLinks[0].innerText = t.navReady;
-        desktopLinks[1].innerText = t.navName;
-        desktopLinks[2].innerText = t.navCustom;
-    }
     
     const cartCountVal = document.getElementById("cartCount").innerText;
     document.getElementById("cartButtonText").innerHTML = `${t.cartBtn} <span class="cart-count" id="cartCount">${cartCountVal}</span>`;
@@ -748,51 +747,48 @@ function updateLanguageUI() {
     document.querySelector(".badge").innerText = t.badge;
     document.querySelector(".hero h1").innerHTML = `${t.heroTitle1}<br><span>${t.heroTitle2}</span>`;
     document.querySelector(".hero p").innerText = t.heroDesc;
-    const heroBtns = document.querySelectorAll(".hero-buttons a");
-    if(heroBtns.length >= 2) {
-        heroBtns[0].innerText = t.heroBtn1;
-        heroBtns[1].innerText = t.heroBtn2;
-    }
 
-    document.querySelector("#hazir-logolar .section-title h2").innerText = t.sectionTitle;
-    document.querySelector("#hazir-logolar .section-title p").innerText = t.sectionDesc;
-    
-    const noListingBox = document.querySelector("#hazir-logolar div[style*='background: var(--card-bg)']");
-    if(noListingBox) {
-        noListingBox.querySelector("h3").innerText = t.noListingTitle;
-        noListingBox.querySelector("p").innerText = t.noListingDesc;
-    }
+    document.getElementById("btnTab1").innerText = t.tab1;
+    document.getElementById("btnTab2").innerText = t.tab2;
+    document.getElementById("btnTab3").innerText = t.tab3;
 
-    const formBoxes = document.querySelectorAll(".form-box");
-    if(formBoxes.length >= 2) {
-        formBoxes[0].querySelector("h3").innerText = t.form1Title;
-        formBoxes[0].querySelector("p").innerText = t.form1Desc;
-        formBoxes[0].querySelectorAll("label")[0].innerText = t.sectorLabel;
-        formBoxes[0].querySelector("input").placeholder = t.sectorPlaceholder;
-        formBoxes[0].querySelectorAll("label")[1].innerText = t.notesLabel;
-        formBoxes[0].querySelector("textarea").placeholder = t.notesPlaceholder;
-        formBoxes[0].querySelector("button").innerText = t.sendBtn1;
+    document.getElementById("sec1Title").innerText = t.sec1Title;
+    document.getElementById("sec1Desc").innerText = t.sec1Desc;
+    document.getElementById("noListingTitle").innerText = t.noListingTitle;
+    document.getElementById("noListingDesc").innerText = t.noListingDesc;
 
-        formBoxes[1].querySelector("h3").innerText = t.form2Title;
-        formBoxes[1].querySelector("p").innerText = t.form2Desc;
-        formBoxes[1].querySelectorAll("label")[0].innerText = t.subjectLabel;
-        formBoxes[1].querySelector("input").placeholder = t.subjectPlaceholder;
-        formBoxes[1].querySelectorAll("label")[1].innerText = t.msgLabel;
-        formBoxes[1].querySelector("textarea").placeholder = t.msgPlaceholder;
-        formBoxes[1].querySelector("button").innerText = t.sendBtn2;
-    }
+    document.getElementById("form1Title").innerText = t.form1Title;
+    document.getElementById("form1Desc").innerText = t.form1Desc;
+    document.getElementById("lblSector").innerText = t.lblSector;
+    document.getElementById("customSector").placeholder = t.sectorPlaceholder;
+    document.getElementById("lblNotes").innerText = t.lblNotes;
+    document.getElementById("customNotes").placeholder = t.notesPlaceholder;
+    document.getElementById("btnSend1").innerText = t.btnSend1;
 
-    document.querySelector(".cart-panel-header h3").innerText = t.cartTitle;
-    document.querySelector(".checkout-btn").innerText = t.checkoutBtn;
-    const totalSpan = document.querySelector("#cartTotal");
-    if(totalSpan && totalSpan.parentElement) {
-        totalSpan.parentElement.querySelector("span:first-child").innerText = t.totalText;
-    }
+    document.getElementById("form2Title").innerText = t.form2Title;
+    document.getElementById("form2Desc").innerText = t.form2Desc;
+    document.getElementById("lblSubject").innerText = t.lblSubject;
+    document.getElementById("msgSubject").placeholder = t.subjectPlaceholder;
+    document.getElementById("lblMsg").innerText = t.lblMsg;
+    document.getElementById("msgBody").placeholder = t.msgPlaceholder;
+    document.getElementById("btnSend2").innerText = t.btnSend2;
+
+    document.getElementById("cartPanelTitle").innerText = t.cartPanelTitle;
+    document.getElementById("totalLabel").innerText = t.totalLabel;
+    document.getElementById("checkoutBtnText").innerText = t.checkoutBtnText;
 
     document.querySelector("footer .footer-desc").innerText = t.footerDesc;
     document.querySelector("footer p:last-child").innerText = t.footerRights;
 
     updateCartUI();
+}
+
+function switchTab(tabId, btnElement) {
+    document.querySelectorAll('.tab-pane').forEach(pane => pane.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    
+    document.getElementById(tabId).classList.add('active');
+    btnElement.classList.add('active');
 }
 
 function showToast(message) {
