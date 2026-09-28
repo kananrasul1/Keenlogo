@@ -371,7 +371,7 @@ header{
 
 .product-image{
     height:280px;
-    background: #111111;
+    background: #000000;
     border-bottom: 1px solid var(--border-color);
     display:flex;
     align-items:center;
@@ -386,28 +386,20 @@ header{
     object-fit: cover;
 }
 
-.blur-overlay {
+/* ORTA BOY "K" EBLEM FİLİGRANI */
+.watermark-emblem {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 82%;
-    height: 56px;
-    background: rgba(10, 10, 10, 0.85);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 75px;
+    height: 75px;
+    object-fit: contain;
+    opacity: 0.90;
+    pointer-events: none;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8));
     z-index: 2;
-}
-
-.blur-overlay span {
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 2.5px;
+    border-radius: 10px;
 }
 
 .product-info{
@@ -685,7 +677,7 @@ footer p {
         <button class="tab-btn" id="btnTab3" onclick="switchTab('tab-ozel', this)">💬 Özel Tasarım Görüşmesi</button>
     </div>
 
-    <!-- SEKME 1: HAZIR LOGOLAR (VİTRİN İLANLARI) -->
+    <!-- SEKME 1: HAZIR LOGOLAR (AKTİF İLANLAR) -->
     <div class="tab-pane active" id="tab-logolar">
         <div class="section-title">
             <h2 id="sec1Title">Hazır Logolar</h2>
@@ -697,16 +689,14 @@ footer p {
             <div class="product">
                 <div class="product-image">
                     <img src="624a0052-8d86-429a-afb0-ea4cd08f11be-1_all_21695.jpg" alt="Orange Mountain Logo">
-                    <div class="blur-overlay">
-                        <span>KEENLOGO KORUMASI</span>
-                    </div>
+                    <img src="1000274924.png" alt="KeenLogo Watermark" class="watermark-emblem">
                 </div>
                 <div class="product-info">
-                    <h3 data-i18n="prod1Title">Orange Mountain</h3>
-                    <p data-i18n="prod1Desc">Siyah arka plan üzerinde turuncu hatlı dağ ve doğa konseptli modern logo.</p>
+                    <h3>Orange Mountain</h3>
+                    <p>Siyah arka plan üzerinde turuncu hatlı dağ ve doğa konseptli modern logo.</p>
                     <div class="price-row">
                         <span class="price">5$</span>
-                        <button class="buy-btn" onclick="addToCart('Orange Mountain', 5, '$')" data-i18n="buyBtn">Sepete Ekle</button>
+                        <button class="buy-btn" onclick="addToCart('Orange Mountain', 5, '$')">Sepete Ekle</button>
                     </div>
                 </div>
             </div>
@@ -715,16 +705,14 @@ footer p {
             <div class="product">
                 <div class="product-image">
                     <img src="1000289329.jpg" alt="Golden Galaxy Logo">
-                    <div class="blur-overlay">
-                        <span>KEENLOGO KORUMASI</span>
-                    </div>
+                    <img src="1000274924.png" alt="KeenLogo Watermark" class="watermark-emblem">
                 </div>
                 <div class="product-info">
-                    <h3 data-i18n="prod2Title">Golden Galaxy</h3>
-                    <p data-i18n="prod2Desc">Koyu arka plan üzerinde ışıltılı altın rengi parçacıklardan oluşan spiral galaksi konsepti.</p>
+                    <h3>Golden Galaxy</h3>
+                    <p>Koyu arka plan üzerinde ışıltılı altın rengi parçacıklardan oluşan spiral galaksi konsepti.</p>
                     <div class="price-row">
                         <span class="price">2$</span>
-                        <button class="buy-btn" onclick="addToCart('Golden Galaxy', 2, '$')" data-i18n="buyBtn">Sepete Ekle</button>
+                        <button class="buy-btn" onclick="addToCart('Golden Galaxy', 2, '$')">Sepete Ekle</button>
                     </div>
                 </div>
             </div>
@@ -812,9 +800,6 @@ const translations = {
         tab3: "💬 Özel Tasarım Görüşmesi",
         sec1Title: "Hazır Logolar",
         sec1Desc: "Vitrinimizdeki özel tasarım konseptlerinden dilediğinizi seçin.",
-        prod1Desc: "Siyah arka plan üzerinde turuncu hatlı dağ ve doğa konseptli modern logo.",
-        prod2Desc: "Koyu arka plan üzerinde ışıltılı altın rengi parçacıklardan oluşan spiral galaksi konsepti.",
-        buyBtn: "Sepete Ekle",
         form1Title: "Firma İsmi & Konsept Talebi",
         form1Desc: "İşletmeniz için en uygun ismi bulalım ve sıfırdan konsept oluşturalım.",
         lblSector: "Faaliyet Alanı (Sektör)",
@@ -848,9 +833,6 @@ const translations = {
         tab3: "💬 Custom Design Consultation",
         sec1Title: "Ready Logos",
         sec1Desc: "Choose any custom design concept from our showcase.",
-        prod1Desc: "Modern mountain and nature concept logo with orange lines on a dark background.",
-        prod2Desc: "Spiral galaxy and cosmic logo concept consisting of glowing golden particles on a dark background.",
-        buyBtn: "Add to Cart",
         form1Title: "Company Name & Concept Request",
         form1Desc: "Let's find the best name for your business and build a concept from scratch.",
         lblSector: "Industry / Sector",
@@ -902,10 +884,6 @@ function updateLanguageUI() {
 
     document.getElementById("sec1Title").innerText = t.sec1Title;
     document.getElementById("sec1Desc").innerText = t.sec1Desc;
-
-    document.querySelectorAll("[data-i18n='prod1Desc']")[0].innerText = t.prod1Desc;
-    document.querySelectorAll("[data-i18n='prod2Desc']")[0].innerText = t.prod2Desc;
-    document.querySelectorAll("[data-i18n='buyBtn']").forEach(btn => btn.innerText = t.buyBtn);
 
     document.getElementById("form1Title").innerText = t.form1Title;
     document.getElementById("form1Desc").innerText = t.form1Desc;
